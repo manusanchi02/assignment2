@@ -1,0 +1,20 @@
+electronics classes:
+  -led 			DONE
+  -lcd monitor		DONE
+  -distance sensor	DONE
+  -button		DONE
+  -temperature sensor	DONE
+  -servomotor		DONE
+  -presence sensor	DONE
+
+gui with python:
+  -input for com port
+  -label with current temperature
+  -label with total car washed
+  -label to show current state
+  -label for errors
+  -button to restart after error
+
+programming:
+  -scheduler
+  -
