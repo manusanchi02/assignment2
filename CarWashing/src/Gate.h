@@ -1,7 +1,6 @@
 #ifndef __GATE__
 #define __GATE__
 
-#include <Arduino.h>
 #include <Servo.h>
 
 class Gate {
