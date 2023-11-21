@@ -1,4 +1,4 @@
-#include "include/Led.h"
+#include"Led.h"
 #include <Arduino.h>
 
 Led::Led(int pin) {
@@ -7,16 +7,16 @@ Led::Led(int pin) {
     pinMode(pin, OUTPUT);
 }
 
-Led::switchOn() {
+void Led::switchOn() {
     pinMode(pin, HIGH);
     this->state = true;
 }
 
-Led::switchOff() {
+void Led::switchOff() {
     pinMode(pin, LOW);
     this->state = false;
 }
 
-Led::isOn() {
+bool Led::isOn() {
     return this->state;
 }

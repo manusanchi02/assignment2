@@ -1,4 +1,4 @@
-#include "include/Button.h"
+#include"Button.h"
 #define FIXAMOUNT 300
 
 long previousTime;
@@ -13,5 +13,5 @@ bool Button::isPressed() {
 }
 
 bool resolveBouncing() {
-    return (millis() - prevoiusTime > FIXAMOUNT);
+    return (millis() - previousTime > FIXAMOUNT);
 }

@@ -1,4 +1,4 @@
-#include "include/Gate.h"
+#include"Gate.h"
 
 Gate::Gate(int pin,int open,int close) {
     this->pin = pin;
