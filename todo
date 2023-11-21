@@ -16,5 +16,5 @@ gui with python:
   -button to restart after error
 
 programming:
-  -divide in task (1 class for each task)
+  -divide in task (1 class for each state and 1 for each task)
   -
