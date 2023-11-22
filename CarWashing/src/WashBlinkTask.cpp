@@ -5,6 +5,7 @@ int counter;
 
 WashBlinkLed::WashBlinkLed(int pin) {
     this->pin = pin;
+    counter = 0;
 }
 
 void WashBlinkLed::init(int period) {
@@ -26,6 +27,7 @@ void WashBlinkLed::tick() {
             break;
         }
     } else {
+        counter = 0;
         washing = false;
         leaving = true;
     }
