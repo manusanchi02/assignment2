@@ -25,5 +25,8 @@ void WashBlinkLed::tick() {
             state = OFF;
             break;
         }
+    } else {
+        washing = false;
+        leaving = true;
     }
 }
