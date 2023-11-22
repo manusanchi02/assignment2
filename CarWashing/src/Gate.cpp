@@ -1,4 +1,5 @@
 #include"Gate.h"
+#include <Arduino.h>
 
 Gate::Gate(int pin,int open,int close) {
     this->pin = pin;
