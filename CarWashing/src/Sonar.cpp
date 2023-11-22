@@ -2,8 +2,8 @@
 #include <Arduino.h>
 
 Sonar::Sonar(int echoPinIn, int trigPinOut, float velocitaSuono) {
-    this->pinIn = echoPinIn;
-    this->pinOut = trigPinOut;
+    this->echoPinIn = echoPinIn;
+    this->trigPinOut = trigPinOut;
     this->velocitaSuono = velocitaSuono;
     Serial.begin(115200);
     pinMode(echoPinIn, INPUT);
