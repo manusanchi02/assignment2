@@ -2,28 +2,32 @@
 #define __TASK__
 
 class Task {
-  int myPeriod;
-  int timeElapsed;
-  
-public:
-  virtual void init(int period){
-    myPeriod = period;  
-    timeElapsed = 0;
-  }
-  
-  virtual void tick() = 0;
+	int myPeriod;
+	int timeElapsed;
 
-  bool updateAndCheckTime(int basePeriod){
-    timeElapsed += basePeriod;
-    if (timeElapsed >= myPeriod){
-      timeElapsed = 0;
-      return true;
-    } else {
-      return false; 
-    }
-  }
-  
+public:
+	virtual void init(int period) {
+		myPeriod = period;
+		timeElapsed = 0;
+	}
+
+	virtual void tick() = 0;
+
+	bool updateAndCheckTime(int basePeriod) {
+		timeElapsed += basePeriod;
+		if (timeElapsed >= myPeriod) {
+			timeElapsed = 0;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	protected: 
+		bool washing = false;
+		bool moving = false;
+		bool welcome = true;
 };
 
 #endif
-
