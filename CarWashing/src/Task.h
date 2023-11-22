@@ -28,7 +28,8 @@ public:
 		bool washing = false;
 		bool moving = false;
 		bool welcome = true;
-		bool leaving = true;
+		bool leaving = false;
+		bool closing = false;
 };
 
 #endif
