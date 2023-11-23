@@ -24,7 +24,13 @@ public:
 		}
 	}
 
-	protected: 
+	protected:
+		float minDist;
+		//N variable in millisenconds
+		int N1; 
+		int N2;
+		bool isNear = false;
+
 		bool washing = false;
 		bool moving = false;
 		bool welcome = true;
