@@ -10,9 +10,13 @@ class ReadyTask : public Task {
     public:
         /**
          * Class constructor:
-         * @param pin number of the led pin
+         * @param ledPin number of the led pin
+         * @param gatePin number of the gate pin
+         * @param echoPin number of the echo pin
+         * @param trigPin number of the trig pin
+         * @param minDistance minimum distance to start washing
         */
-        ReadyTask(int ledPin, int gatePin, int echoPin, int trigPin, int int rows, int columns);
+        ReadyTask(int ledPin, int gatePin, int echoPin, int trigPin, float minDistance, int int rows, int columns);
         /**
          * Init method.
          * @param period task period
@@ -29,6 +33,7 @@ class ReadyTask : public Task {
         int gatePin;
         int echoPin;
         int trigPin;
+        float minDistance;
         int rows;
         int columns;
         Led* led;

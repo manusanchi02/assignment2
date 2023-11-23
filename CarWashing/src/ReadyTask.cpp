@@ -2,11 +2,12 @@
 #define PERIOD 60
 int counter;
 
-ReadyTask :: ReadyTask(int ledPin, int gatePin, int echoPin, int trigPin, int rows, int columns) {
+ReadyTask :: ReadyTask(int ledPin, int gatePin, int echoPin, int trigPin, float minDistance, int rows, int columns) {
     this->ledPin = ledPin;
     this->gatePin = gatePin;
     this->echoPin = echoPin;
     this->trigPin = trigPin;
+    this->minDistance = minDistance;
     this->rows = rows;
     this->columns = columns;
     counter = 0;
@@ -21,7 +22,7 @@ void ReadyTask :: init(int period) {
 }
 
 void ReadyTask :: tick() {
-    if(ready && counter < PERIOD && sonar->getDistance() > 10) {
+    if(ready && counter < PERIOD && sonar->getDistance() < minDistance) {
         led->switchOn();
         lcd->setAndPrint("Ready to wash", 1, 0);
         gate->close();
