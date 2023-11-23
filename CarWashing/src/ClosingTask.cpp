@@ -2,7 +2,7 @@
 #define PERIOD 60
 int counter;
 
-ClosingTask :: ClosingTask(int gatePin, int echoPin, int trigPin, float maxDistance) {
+ClosingTask :: ClosingTask(int gatePin,int gateOpen,int gateClose, int echoPin, int trigPin, float maxDistance) {
     this->gatePin = gatePin;
     this->echoPin = echoPin;
     this->trigPin = trigPin;
@@ -11,8 +11,8 @@ ClosingTask :: ClosingTask(int gatePin, int echoPin, int trigPin, float maxDista
 }
 
 void ClosingTask :: init(int period) {
-    gate = new Gate(gatePin);
-    sonar = new Sonar(echoPin, trigPin);
+    gate = new Gate(gatePin, gateOpen, gateClose);
+    sonar = new Sonar(echoPin, trigPin, 0.034);
     Task::init(period);
 }
 

@@ -13,7 +13,7 @@ class ClosingTask : public Task {
          * @param trigPin number of the trig pin
          * @param maxDistance max distance to start closing
         */
-        ClosingTask(int gatePin, int echoPin, int trigPin, float maxDistance);
+        ClosingTask(int gatePin,int gateOpen,int gateClose, int echoPin, int trigPin, float maxDistance);
         /**
          * Init method.
          * @param period task period
