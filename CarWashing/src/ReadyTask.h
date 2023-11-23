@@ -16,7 +16,7 @@ class ReadyTask : public Task {
          * @param trigPin number of the trig pin
          * @param minDistance minimum distance to start washing
         */
-        ReadyTask(int ledPin, int gatePin, int echoPin, int trigPin, float minDistance, int int rows, int columns);
+        ReadyTask(int ledPin, int gatePin, int echoPin, int trigPin, float minDistance, int rows, int columns);
         /**
          * Init method.
          * @param period task period
