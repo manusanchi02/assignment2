@@ -37,6 +37,8 @@ public:
 		bool ready = false;
 		bool closing = false;
 		bool sleeping = false;
+		bool leaving = false;
+		bool closing = false;
 };
 
 #endif
