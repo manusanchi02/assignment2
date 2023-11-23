@@ -1,5 +1,5 @@
-#ifndef __WELCOMETASK__
-#define __WELCOMETASK__
+#ifndef __READYTASK__
+#define __READYETASK__
 #include "Task.h"
 #include "Led.h"
 #include "Gate.h"
