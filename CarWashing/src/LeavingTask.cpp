@@ -1,5 +1,6 @@
 #include "LeavingTask.h"
 #define DISTANCE 60
+#define MAXDISTANCE 1000
 
 int distance;
 
@@ -33,6 +34,7 @@ void LeavingTask :: tick() {
         delay(1000);
         distance = distanceSensor->getDistance();
     } else {
+        distance = MAXDISTANCE;
         leaving = false;
         closing = true;
     }
