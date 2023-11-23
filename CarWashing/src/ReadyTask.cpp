@@ -30,7 +30,5 @@ void ReadyTask :: tick() {
     } else {
         washing = true;
         ready = false;
-        moving = false;
-        welcome = false;
     }
 }

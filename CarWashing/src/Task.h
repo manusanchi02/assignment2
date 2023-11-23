@@ -29,6 +29,8 @@ public:
 		bool moving = false;
 		bool welcome = true;
 		bool ready = false;
+		bool closing = false;
+		bool sleeping = false;
 };
 
 #endif
