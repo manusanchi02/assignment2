@@ -27,10 +27,9 @@ public:
 	protected:
 		float minDist;
 		//N variable in millisenconds
-		int N1; 
-		int N2;
+		int N1 = 1000; 
+		int N2 = 2000;
 		bool isNear = false;
-
 		bool washing = false;
 		bool moving = false;
 		bool welcome = true;
@@ -38,7 +37,6 @@ public:
 		bool closing = false;
 		bool sleeping = false;
 		bool leaving = false;
-		bool closing = false;
 };
 
 #endif

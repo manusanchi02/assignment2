@@ -27,6 +27,8 @@ class ClosingTask : public Task {
         int gatePin;
         int echoPin;
         int trigPin;
+        int gateOpen;
+        int gateClose;
         float maxDistance;
         Gate* gate;
         Sonar* sonar;

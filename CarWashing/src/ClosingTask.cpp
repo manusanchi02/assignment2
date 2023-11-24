@@ -7,6 +7,8 @@ ClosingTask :: ClosingTask(int gatePin,int gateOpen,int gateClose, int echoPin, 
     this->echoPin = echoPin;
     this->trigPin = trigPin;
     this->maxDistance = maxDistance;
+    this->gateOpen = gateOpen;
+    this->gateClose = gateClose;
     counter = 0;
 }
 
@@ -18,7 +20,7 @@ void ClosingTask :: init(int period) {
 
 void ClosingTask :: tick() {
     if(closing && counter < PERIOD && sonar->getDistance() > maxDistance) {
-        gate->close();
+        gate->setClose();
         counter++;
     } else {
         sleeping = true;

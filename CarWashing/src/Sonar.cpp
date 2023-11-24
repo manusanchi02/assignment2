@@ -5,7 +5,7 @@ Sonar::Sonar(int echoPinIn, int trigPinOut, float velocitaSuono) {
     this->echoPinIn = echoPinIn;
     this->trigPinOut = trigPinOut;
     this->velocitaSuono = velocitaSuono;
-    Serial.begin(115200);
+    Serial.begin(9600);
     pinMode(echoPinIn, INPUT);
     pinMode(trigPinOut, OUTPUT);
 }

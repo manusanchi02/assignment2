@@ -16,5 +16,7 @@ class LcdMonitor {
          * @param yposition y coordinate of start pixel (0-based)
         */
         void setAndPrint(char* string, int xposition, int yposition);
+    protected:
+        LiquidCrystal_I2C* lcd;
 };
 #endif

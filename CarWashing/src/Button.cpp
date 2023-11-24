@@ -8,10 +8,10 @@ Button::Button(int pin) {
     pinMode(pin, INPUT);
 }
 
-bool Button::isPressed() {
-    return resolveBouncing && digitalRead(pin) == HIGH;
-}
-
 bool resolveBouncing() {
     return (millis() - previousTime > FIXAMOUNT);
+}
+
+bool Button::isPressed() {
+    return resolveBouncing() && digitalRead(pin) == HIGH;
 }
