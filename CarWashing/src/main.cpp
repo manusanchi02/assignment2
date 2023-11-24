@@ -43,7 +43,6 @@ void setup() {
 	Task* t8 = new WashBlinkTask(11);
 	t8->init(100);
 	sched.addTask(t8);
-
 }
 void loop() {
 	sched.schedule();
