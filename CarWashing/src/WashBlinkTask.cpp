@@ -1,20 +1,20 @@
-#include "WashBlinkLed.h"
+#include "WashBlinkTask.h"
 #define PERIOD 60
 
 int counter;
 
-WashBlinkLed::WashBlinkLed(int pin) {
+WashBlinkTask::WashBlinkTask(int pin) {
     this->pin = pin;
     counter = 0;
 }
 
-void WashBlinkLed::init(int period) {
+void WashBlinkTask::init(int period) {
     led = new Led(this->pin);
     Task::init(period);
     state = OFF;
 }
 
-void WashBlinkLed::tick() {
+void WashBlinkTask::tick() {
     if(washing && counter < PERIOD) {
         switch (state){
         case OFF:

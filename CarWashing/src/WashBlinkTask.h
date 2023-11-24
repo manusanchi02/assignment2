@@ -1,15 +1,15 @@
-#ifndef __WASHBLINKLED__
-#define __WASHBLINKLED__
+#ifndef __WASHBLINKTASK__
+#define __WASHBLINKTASK__
 #include "Task.h"
 #include "Led.h"
 
-class WashBlinkLed : public Task {
+class WashBlinkTask : public Task {
     public:
         /**
          * Class constructor.
          * @param pin number of pin where the led is connect.
         */
-        WashBlinkLed(int pin);
+        WashBlinkTask(int pin);
         /**
          * Init method.
          * @param period
