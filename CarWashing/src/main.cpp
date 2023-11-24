@@ -29,7 +29,6 @@ void setup() {
 	Task* t4 = new BlinkTask(3);
 	t4->init(100);
 	sched.addTask(t4);
-	// insert all tasks
 	Task* t5 = new ClosingTask(8, 1, 0, 13, 12, 52);
 	t5->init(100);
 	sched.addTask(t5);
