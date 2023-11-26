@@ -6,14 +6,13 @@
 class ApproachTask : public Task
 {
 public:
-    ApproachTask(int pinTrigger, int pinEcho, float velocitaSuono);
+    ApproachTask(int pinTrigger, int pinEcho);
     void init(int period);
     void tick();
 
 protected:
     int pinTrigger;
     int pinEcho;
-    float velocitaSuono;
     int counter;
     int period;
     Sonar *sonar;

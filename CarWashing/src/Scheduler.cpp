@@ -49,7 +49,9 @@ bool Scheduler::removeTask(Task *task)
   if (found == true)
   {
     nTasks--;
+    return true;
   }
+  return false;
 }
 
 void Scheduler::schedule()

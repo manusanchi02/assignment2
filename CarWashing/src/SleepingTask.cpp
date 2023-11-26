@@ -2,19 +2,20 @@
 #include <avr/sleep.h>
 #include <avr/power.h>
 
-int counter; 
-
-SleepingTask::SleepingTask() {
+SleepingTask::SleepingTask()
+{
     counter = 0;
 }
 
-void SleepingTask::init() {
-
+void SleepingTask::init()
+{
 }
 
-void SleepingTask::tick() {
+void SleepingTask::tick()
+{
 
-    if(sleeping && counter < 1) {
+    if (sleeping && counter < 1)
+    {
         set_sleep_mode(SLEEP_MODE_PWR_DOWN);
         sleep_enable();
         power_adc_disable();
@@ -25,7 +26,9 @@ void SleepingTask::tick() {
         sleep_disable();
         power_all_enable();
         counter++;
-    } else {
+    }
+    else
+    {
         sleeping = false;
         welcome = true;
     }

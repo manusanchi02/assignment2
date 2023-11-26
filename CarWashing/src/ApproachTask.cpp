@@ -1,17 +1,16 @@
 #include "ApproachTask.h"
 
-ApproachTask ::ApproachTask(int pinTrigger, int pinEcho, float velocitaSuono)
+ApproachTask ::ApproachTask(int pinTrigger, int pinEcho)
 {
     this->pinTrigger = pinTrigger;
     this->pinEcho = pinEcho;
-    this->velocitaSuono = velocitaSuono;
     this->counter = 0;
 }
 
 void ApproachTask ::init(int period)
 {
     this->period = period;
-    sonar = new Sonar(pinTrigger, pinEcho, velocitaSuono);
+    sonar = new Sonar(pinTrigger, pinEcho);
     Task::init(period);
 }
 
