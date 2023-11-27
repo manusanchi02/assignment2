@@ -1,6 +1,6 @@
 #ifndef __TASK__
 #define __TASK__
-
+#include <Arduino.h>
 class Task
 {
 	int myPeriod;
@@ -32,7 +32,7 @@ public:
 protected:
 	float minDist;
 	// N variable in millisenconds
-	int N1 = 1000;
+	int N1 = 5000;
 	int N2 = 2000;
 	bool isNear = false;
 	bool washing = false;

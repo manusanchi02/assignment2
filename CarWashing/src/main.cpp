@@ -8,6 +8,7 @@
 #include "SleepingTask.h"
 #include "WashBlinkTask.h"
 #include "Scheduler.h"
+#include "WelcomeTask.h"
 #define MAXDIST 20
 #define MIDISTANCE 5
 
@@ -15,13 +16,14 @@ Scheduler sched;
 
 void setup()
 {
+	Serial.begin(9600);
 	sched.init(50);
-
+/*
 	Task *t0 = new SleepingTask();
-	t0->init(500);
+	t0->init(100);
 	sched.addTask(t0);
 	Task *t1 = new MovingTask(0, 3, 16, 9, 90, 0);
-	t1->init(150);
+	t1->init(100);
 	sched.addTask(t1);
 	Task *t2 = new ApproachTask(7, 6);
 	t2->init(100);
@@ -43,9 +45,14 @@ void setup()
 	sched.addTask(t7);
 	Task *t8 = new WashBlinkTask(11);
 	t8->init(100);
-	sched.addTask(t8);
+	sched.addTask(t8);*/
+	Task *t9 = new WelcomeTask(13, 3, 16);
+	t9->init(100);
+	sched.addTask(t9);
+
 }
 void loop()
 {
 	sched.schedule();
+	Serial.print("c");
 }

@@ -27,6 +27,6 @@ void LoadBarTask ::tick()
         washing = false;
         leaving = true;
         counter = 0;
-        strcpy("", bar);
+        strcpy(bar, "");
     }
 }
