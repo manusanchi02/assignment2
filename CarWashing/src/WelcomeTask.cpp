@@ -20,6 +20,7 @@ void WelcomeTask ::tick()
 {
     if (welcome && counter < N1)
     {
+        Serial.println("Welcome");
         led->switchOn();
         lcd->setAndPrint("Welcome", 1, 0);
         counter += period;

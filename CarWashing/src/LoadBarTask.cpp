@@ -19,6 +19,7 @@ void LoadBarTask ::tick()
 {
     if (washing && counter < PERIOD)
     {
+        Serial.println("Loading bar");
         lcd->setAndPrint(bar, 0, 1);
         strcat(bar, "*");
     }

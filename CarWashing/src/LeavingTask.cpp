@@ -30,6 +30,7 @@ void LeavingTask ::tick()
 {
     if (leaving && distance < DISTANCE)
     {
+        Serial.print("Leaving ");
         led1->switchOff();
         led2->switchOn();
         lcd->setAndPrint("Washing complete, you can leave the area", 1, 0);

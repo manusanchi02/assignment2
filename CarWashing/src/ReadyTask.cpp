@@ -26,6 +26,7 @@ void ReadyTask ::tick()
 {
     if (ready && counter < PERIOD && sonar->getDistance() < minDistance)
     {
+        Serial.println("Ready");
         led->switchOn();
         lcd->setAndPrint("Ready to wash", 1, 0);
         gate->setClose();

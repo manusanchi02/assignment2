@@ -24,6 +24,7 @@ void ClosingTask ::tick()
 {
     if (closing && counter < PERIOD && sonar->getDistance() > maxDistance)
     {
+        Serial.println("Closing");
         gate->setClose();
         counter++;
     }

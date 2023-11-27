@@ -16,6 +16,7 @@ void SleepingTask::tick()
 
     if (sleeping && counter < 1)
     {
+        Serial.println("Sleeping");
         set_sleep_mode(SLEEP_MODE_PWR_DOWN);
         sleep_enable();
         power_adc_disable();
