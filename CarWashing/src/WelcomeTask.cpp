@@ -10,7 +10,6 @@ WelcomeTask ::WelcomeTask(int pin, int rows, int columns)
 
 void WelcomeTask ::init(int period)
 {
-    this->period = period;
     led = new Led(pin);
     lcd = new LcdMonitor(rows, columns);
     Task::init(period);
@@ -18,14 +17,14 @@ void WelcomeTask ::init(int period)
 
 void WelcomeTask ::tick()
 {
-    if (welcome && counter < N1)
+    if (welcome)
     {
         Serial.println("Welcome");
         led->switchOn();
         lcd->setAndPrint("Welcome", 1, 0);
-        counter += period;
+        counter += myPeriod;
     }
-    else
+    if(counter >= N1)
     {
         counter = 0;
         moving = true;

@@ -16,7 +16,7 @@ void WashBlinkTask::init(int period)
 
 void WashBlinkTask::tick()
 {
-    if (washing && counter < PERIOD)
+    if (washing)
     {
         Serial.print("Washing ");
         switch (state)
@@ -30,8 +30,9 @@ void WashBlinkTask::tick()
             state = OFF;
             break;
         }
+        counter += myPeriod;
     }
-    else
+    if (counter >= N4 )
     {
         counter = 0;
         washing = false;
