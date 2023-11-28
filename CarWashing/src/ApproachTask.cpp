@@ -9,7 +9,6 @@ ApproachTask ::ApproachTask(int pinTrigger, int pinEcho)
 
 void ApproachTask ::init(int period)
 {
-    this->period = period;
     sonar = new Sonar(pinTrigger, pinEcho);
     Task::init(period);
 }
@@ -21,7 +20,7 @@ void ApproachTask ::tick()
         Serial.println("Approaching");
         if (sonar->getDistance() < minDist)
         {
-            counter += period;
+            counter += myPeriod;
         }
         else
         {

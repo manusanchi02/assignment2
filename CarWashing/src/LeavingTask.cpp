@@ -28,17 +28,24 @@ void LeavingTask ::init(int period)
 
 void LeavingTask ::tick()
 {
-    if (leaving && distance < DISTANCE)
+    if (leaving)
     {
         Serial.print("Leaving ");
         led1->switchOff();
         led2->switchOn();
         lcd->setAndPrint("Washing complete, you can leave the area", 1, 0);
         gate->setOpen();
-        delay(1000);
         distance = distanceSensor->getDistance();
+        if (distance < minDist)
+        {
+            counter += myPeriod;
+        }
+        else
+        {
+            counter = 0;
+        }
     }
-    else
+    if (counter > N4)
     {
         distance = MAXDISTANCE;
         leaving = false;

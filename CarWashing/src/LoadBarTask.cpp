@@ -17,13 +17,14 @@ void LoadBarTask ::init(int period)
 
 void LoadBarTask ::tick()
 {
-    if (washing && counter < PERIOD)
+    if (washing)
     {
         Serial.println("Loading bar");
         lcd->setAndPrint(bar, 0, 1);
         strcat(bar, "*");
+        counter += myPeriod;
     }
-    else
+    if (counter >= PERIOD)
     {
         washing = false;
         leaving = true;

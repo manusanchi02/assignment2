@@ -37,6 +37,7 @@ protected:
     int gatePin;
     int echoPinIn;
     int trigPinOut;
+    int counter;
     Led *led1;
     Led *led2;
     LcdMonitor *lcd;

@@ -1,39 +1,43 @@
 #include "ReadyTask.h"
+#include <EnableInterrupt.h>
 #define PERIOD 60
+volatile bool buttonPressed = false;
 
-ReadyTask ::ReadyTask(int ledPin, int gatePin, int echoPin, int trigPin, float minDistance, int rows, int columns)
+void buttonHandler()
+{
+    buttonPressed = true;
+}
+
+ReadyTask ::ReadyTask(int ledPin, int gatePin, int rows, int columns, int buttonPin)
 {
     this->ledPin = ledPin;
     this->gatePin = gatePin;
-    this->echoPin = echoPin;
-    this->trigPin = trigPin;
-    this->minDistance = minDistance;
     this->rows = rows;
     this->columns = columns;
-    counter = 0;
+    this->buttonPin = buttonPin;
 }
 
 void ReadyTask ::init(int period)
 {
     led = new Led(ledPin);
     gate = new Gate(this->gatePin, 0, 90);
-    sonar = new Sonar(echoPin, trigPin);
     lcd = new LcdMonitor(rows, columns);
+    enableInterrupt(buttonPin, buttonHandler, CHANGE);
     Task::init(period);
 }
 
 void ReadyTask ::tick()
 {
-    if (ready && counter < PERIOD && sonar->getDistance() < minDistance)
+    if (ready)
     {
         Serial.println("Ready");
         led->switchOn();
         lcd->setAndPrint("Ready to wash", 1, 0);
         gate->setClose();
-        counter++;
     }
-    else
+    if (ready && buttonPressed)
     {
+        buttonPressed = false;
         washing = true;
         ready = false;
     }

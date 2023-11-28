@@ -21,6 +21,8 @@
 #define GATECLOSE 0
 #define TRIGPIN 7
 #define ECHOPIN 6
+#define BUTTONPIN 5
+#define PIRPIN 4
 
 
 Scheduler sched;
@@ -34,7 +36,7 @@ void setup()
 	t0->init(100);
 	sched.addTask(t0);
 	Task *t1 = new MovingTask(LCDROWS, LCDCOLS, GATEPIN, GATEOPEN, GATECLOSE);
-	t1->init(100);
+	t1->init(200);
 	sched.addTask(t1);
 	Task *t2 = new BlinkTask(LEDPIN2);
 	t2->init(100);
@@ -42,7 +44,7 @@ void setup()
 	Task *t3 = new ApproachTask(TRIGPIN, ECHOPIN);
 	t3->init(100);
 	sched.addTask(t3);
-	Task *t4 = new ReadyTask(LEDPIN2, GATEPIN, ECHOPIN, TRIGPIN, MIDISTANCE, LCDROWS, LCDCOLS);
+	Task *t4 = new ReadyTask(LEDPIN2, GATEPIN, LCDROWS, LCDCOLS, BUTTONPIN);
 	t4->init(100);
 	sched.addTask(t4);
 	Task *t5 = new WashBlinkTask(LEDPIN3);
@@ -52,12 +54,12 @@ void setup()
 	t6->init(100);
 	sched.addTask(t6);
 	Task *t7 = new LeavingTask(LEDPIN2, LEDPIN3, LCDROWS, LCDCOLS, GATEPIN, ECHOPIN, TRIGPIN);
-	t7->init(100);
+	t7->init(200);
 	sched.addTask(t7);
-	Task *t8 = new ClosingTask(GATEPIN, GATEOPEN, GATECLOSE, ECHOPIN, TRIGPIN, MAXDIST);
-	t8->init(100);
+	Task *t8 = new ClosingTask(GATEPIN, GATEOPEN, GATECLOSE, LEDPIN3);
+	t8->init(200);
 	sched.addTask(t8);
-	Task *t9 = new SleepingTask();
+	Task *t9 = new SleepingTask(PIRPIN);
 	t9->init(100);
 	sched.addTask(t9);
 

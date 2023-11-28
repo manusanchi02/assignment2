@@ -14,7 +14,6 @@ protected:
     int pinTrigger;
     int pinEcho;
     int counter;
-    int period;
     Sonar *sonar;
 };
 

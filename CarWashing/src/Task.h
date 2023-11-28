@@ -3,10 +3,19 @@
 #include <Arduino.h>
 #define N1 5000
 #define N2 2000
+#define N4 2000
+float minDist;
+bool isNear = false;
+bool washing = false;
+bool moving = false;
+bool welcome = true;
+bool ready = false;
+bool closing = false;
+volatile bool sleeping = false;
+bool leaving = false;
 
 class Task
 {
-	int myPeriod;
 	int timeElapsed;
 
 public:
@@ -33,15 +42,7 @@ public:
 	}
 
 protected:
-	float minDist;
-	bool isNear = false;
-	bool washing = false;
-	bool moving = false;
-	bool welcome = true;
-	bool ready = false;
-	bool closing = false;
-	bool sleeping = false;
-	bool leaving = false;
+	int myPeriod;
 };
 
 #endif
