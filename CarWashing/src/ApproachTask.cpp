@@ -1,10 +1,11 @@
 #include "ApproachTask.h"
 
-ApproachTask ::ApproachTask(int pinTrigger, int pinEcho)
+ApproachTask ::ApproachTask(int pinTrigger, int pinEcho, double minDist)
 {
     this->pinTrigger = pinTrigger;
     this->pinEcho = pinEcho;
     this->counter = 0;
+    this->minDist = minDist;
 }
 
 void ApproachTask ::init(int period)
@@ -16,7 +17,7 @@ void ApproachTask ::init(int period)
 void ApproachTask ::tick()
 {
     Serial.println("d");
-    if (moving && counter < N2)
+    if (moving)
     {
         Serial.println("Approaching");
         if (sonar->getDistance() < minDist)
@@ -28,7 +29,7 @@ void ApproachTask ::tick()
             counter = 0;
         }
     }
-    else
+    if(counter >= N2)
     {
         moving = false;
         ready = true;

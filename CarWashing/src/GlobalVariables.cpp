@@ -1,5 +1,4 @@
 #include "GlobalVariables.h"
-float minDist = 0;
 bool isNear = false;
 bool washing = false;
 bool moving =false;

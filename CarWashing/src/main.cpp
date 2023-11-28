@@ -10,7 +10,7 @@
 #include "Scheduler.h"
 #include "WelcomeTask.h"
 #define MAXDIST 0.40
-#define MIDISTANCE 0.10
+#define MINDIST 0.10
 #define LEDPIN1 13
 #define LEDPIN2 12
 #define LEDPIN3 11
@@ -41,7 +41,7 @@ void setup()
 	Task *t2 = new BlinkTask(LEDPIN2);
 	t2->init(250);
 	sched.addTask(t2);
-	Task *t3 = new ApproachTask(TRIGPIN, ECHOPIN);
+	Task *t3 = new ApproachTask(TRIGPIN, ECHOPIN, MINDIST);
 	t3->init(100);
 	sched.addTask(t3);
 	Task *t4 = new ReadyTask(LEDPIN2, GATEPIN, LCDROWS, LCDCOLS, BUTTONPIN);
