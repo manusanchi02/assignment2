@@ -12,12 +12,12 @@ SleepingTask::SleepingTask(int pirPin)
 
 void SleepingTask::init()
 {
-    enableInterrupt(pirPin, wakeUp, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(pirPin), wakeUp, CHANGE);
 }
 
 void SleepingTask::tick()
 {
-
+    Serial.println("j");
     if (sleeping)
     {
         Serial.println("Sleeping");

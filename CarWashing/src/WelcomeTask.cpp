@@ -17,6 +17,7 @@ void WelcomeTask ::init(int period)
 
 void WelcomeTask ::tick()
 {
+    Serial.println("a");
     if (welcome)
     {
         Serial.println("Welcome");
@@ -26,6 +27,7 @@ void WelcomeTask ::tick()
     }
     if(counter >= N1)
     {
+        Serial.println("fine Welcome");
         counter = 0;
         moving = true;
         welcome = false;

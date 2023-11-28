@@ -3,7 +3,6 @@
 #include "Task.h"
 #include <avr/sleep.h>
 #include <avr/power.h>
-#include <EnableInterrupt.h>
 
 class SleepingTask : public Task
 {

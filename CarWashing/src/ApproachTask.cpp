@@ -15,6 +15,7 @@ void ApproachTask ::init(int period)
 
 void ApproachTask ::tick()
 {
+    Serial.println("d");
     if (moving && counter < N2)
     {
         Serial.println("Approaching");
