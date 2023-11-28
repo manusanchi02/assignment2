@@ -20,6 +20,7 @@ void ApproachTask ::tick()
     if (moving)
     {
         Serial.println("Approaching");
+        Serial.println(sonar->getDistance());
         if (sonar->getDistance() < minDist)
         {
             counter += myPeriod;
@@ -31,8 +32,7 @@ void ApproachTask ::tick()
     }
     if(counter >= N2)
     {
-        moving = false;
-        ready = true;
+        isNear = true;
         counter = 0;
     }
 }
