@@ -33,7 +33,7 @@ while True:
     if event == 'Ok':
         comPort = values[0]
         window.close()
-        window = sg.Window('Arduino Controller '+comPort, defaultLayout)
+        window = sg.Window('Arduino Controller '+comPort, defaultLayout,size=(400, 200))
     if event == 'Restart':
         print('Restarting')
 
