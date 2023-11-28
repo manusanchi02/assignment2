@@ -7,12 +7,11 @@
 class MovingTask : public Task
 {
 public:
-    MovingTask(int pinLcd, int rows, int columns, int pinGate, int open, int close);
+    MovingTask(int rows, int columns, int pinGate, int open, int close);
     void init(int period);
     void tick();
 
 protected:
-    int pinLcd;
     int rows;
     int columns;
     int pinGate;

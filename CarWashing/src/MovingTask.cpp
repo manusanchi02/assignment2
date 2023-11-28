@@ -1,8 +1,7 @@
 #include "MovingTask.h"
 
-MovingTask ::MovingTask(int pinLcd, int rows, int columns, int pinGate, int open, int close)
+MovingTask ::MovingTask(int rows, int columns, int pinGate, int open, int close)
 {
-    this->pinLcd = pinLcd;
     this->rows = rows;
     this->columns = columns;
     this->pinGate = pinGate;
