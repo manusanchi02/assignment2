@@ -19,7 +19,6 @@ void ClosingTask ::init(int period)
 
 void ClosingTask ::tick()
 {
-    Serial.println("i");
     if (closing)
     {
         Serial.println("Closing");

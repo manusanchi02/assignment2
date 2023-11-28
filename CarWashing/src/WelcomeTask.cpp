@@ -17,7 +17,6 @@ void WelcomeTask ::init(int period)
 
 void WelcomeTask ::tick()
 {
-    Serial.println("a");
     if (welcome)
     {
         Serial.println("Welcome");

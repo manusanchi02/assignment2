@@ -17,7 +17,6 @@ void SleepingTask::init()
 
 void SleepingTask::tick()
 {
-    Serial.println("j");
     if (sleeping)
     {
         Serial.println("Sleeping");

@@ -14,7 +14,6 @@ void BlinkTask::init(int period)
 
 void BlinkTask::tick()
 {
-    Serial.println("c");
     if (moving)
     {
         switch (state)

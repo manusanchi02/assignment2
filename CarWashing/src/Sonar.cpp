@@ -16,7 +16,7 @@ Sonar::Sonar(int echoPinIn, int trigPinOut)
 float Sonar::getDistance()
 {
     digitalWrite(trigPinOut, LOW);
-    delayMicroseconds(5);
+    delayMicroseconds(3);
     digitalWrite(trigPinOut, HIGH);
     delayMicroseconds(5);
     digitalWrite(trigPinOut, LOW);

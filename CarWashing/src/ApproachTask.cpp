@@ -10,13 +10,12 @@ ApproachTask ::ApproachTask(int pinTrigger, int pinEcho, double minDist)
 
 void ApproachTask ::init(int period)
 {
-    sonar = new Sonar(pinTrigger, pinEcho);
+    sonar = new Sonar(pinEcho, pinTrigger);
     Task::init(period);
 }
 
 void ApproachTask ::tick()
 {
-    Serial.println("d");
     if (moving)
     {
         Serial.println("Approaching");

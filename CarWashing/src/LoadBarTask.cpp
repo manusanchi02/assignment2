@@ -17,7 +17,6 @@ void LoadBarTask ::init(int period)
 
 void LoadBarTask ::tick()
 {
-    Serial.println("g");
     if (washing)
     {
         Serial.println("Loading bar");

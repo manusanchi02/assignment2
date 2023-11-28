@@ -20,7 +20,7 @@
 #define GATEOPEN 90
 #define GATECLOSE 0
 #define TRIGPIN 7
-#define ECHOPIN 6
+#define ECHOPIN 8
 #define BUTTONPIN 3
 #define PIRPIN 2
 
@@ -30,10 +30,10 @@ Scheduler sched;
 void setup()
 {
 	Serial.begin(9600);
-	sched.init(50);
+	sched.init(100);
 
 	Task *t0 = new WelcomeTask(LEDPIN1, LCDROWS, LCDCOLS);
-	t0->init(100);
+	t0->init(200);
 	sched.addTask(t0);
 	Task *t1 = new MovingTask(LCDROWS, LCDCOLS, GATEPIN, GATEOPEN, GATECLOSE);
 	t1->init(220);

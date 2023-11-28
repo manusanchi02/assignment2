@@ -27,7 +27,6 @@ void ReadyTask ::init(int period)
 
 void ReadyTask ::tick()
 {
-    Serial.println("e");
     if (ready)
     {
         Serial.println("Ready");

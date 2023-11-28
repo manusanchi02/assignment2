@@ -21,7 +21,6 @@ void MovingTask ::init(int period)
  */
 void MovingTask ::tick()
 {
-    Serial.println("b");
     if (moving && !isNear)
     {
         Serial.println("Moving");

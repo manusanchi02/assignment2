@@ -16,7 +16,6 @@ void WashBlinkTask::init(int period)
 
 void WashBlinkTask::tick()
 {
-    Serial.println("f");
     if (washing)
     {
         Serial.print("Washing ");

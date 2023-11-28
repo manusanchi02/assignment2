@@ -28,7 +28,6 @@ void LeavingTask ::init(int period)
 
 void LeavingTask ::tick()
 {
-    Serial.println("h");
     if (leaving)
     {
         Serial.print("Leaving ");
