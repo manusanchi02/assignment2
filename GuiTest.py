@@ -1,3 +1,4 @@
+import serial.tools.list_ports
 import PySimpleGUI as sg
 
 errore = True
@@ -5,6 +6,7 @@ currentTemp = 0
 totalWash = 0
 currentState = 'Sleeping'
 errors = 'No Errors'
+comPort= 'COM3'
 restartButton = sg.Button('Restart')
 
 sg.theme('LightBlue')  # Add a touch of color
@@ -29,8 +31,9 @@ while True:
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
         break
     if event == 'Ok':
+        comPort = values[0]
         window.close()
-        window = sg.Window('Arduino Controller', defaultLayout)
+        window = sg.Window('Arduino Controller '+comPort, defaultLayout)
     if event == 'Restart':
         print('Restarting')
 
