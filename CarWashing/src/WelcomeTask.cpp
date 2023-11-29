@@ -21,6 +21,7 @@ void WelcomeTask ::tick()
     {
         Serial.println("Welcome");
         led->switchOn();
+        lcd->clean();
         lcd->setAndPrint("Welcome", 1, 0);
         counter += myPeriod;
     }

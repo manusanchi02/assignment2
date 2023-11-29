@@ -32,6 +32,7 @@ void ReadyTask ::tick()
     {
         Serial.println("Ready");
         led->switchOn();
+        lcd->clean();
         lcd->setAndPrint("Ready to wash", 1, 0);
         gate->setClose();
     }

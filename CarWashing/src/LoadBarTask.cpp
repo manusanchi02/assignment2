@@ -30,5 +30,6 @@ void LoadBarTask ::tick()
         leaving = true;
         counter = 0;
         strcpy(bar, "");
+        lcd->clean();
     }
 }

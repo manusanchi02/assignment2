@@ -13,3 +13,8 @@ void LcdMonitor::setAndPrint(char *string, int xposition, int yposition)
     lcd->setCursor(xposition, yposition);
     lcd->printstr(string);
 }
+
+void LcdMonitor::clean()
+{
+    lcd->clear();
+}
