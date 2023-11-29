@@ -16,6 +16,7 @@ protected:
     int open;
     int close;
     bool state;
+    int pos;
     Servo servo;
 };
 #endif

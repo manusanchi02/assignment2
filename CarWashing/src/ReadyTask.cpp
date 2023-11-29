@@ -5,6 +5,7 @@ volatile bool buttonPressed = false;
 void buttonHandler()
 {
     buttonPressed = true;
+    Serial.println("Button pressed");
 }
 
 ReadyTask ::ReadyTask(int ledPin, int gatePin, int rows, int columns, int buttonPin)
