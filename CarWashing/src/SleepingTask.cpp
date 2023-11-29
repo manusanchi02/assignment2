@@ -1,20 +1,23 @@
 #include "SleepingTask.h"
-#include <avr/sleep.h>
-#include <avr/power.h>
 
-SleepingTask::SleepingTask()
+void wakeUp()
 {
-    counter = 0;
+    sleeping = false;
+}
+
+SleepingTask::SleepingTask(int pirPin)
+{
+    this->pirPin = pirPin;
 }
 
 void SleepingTask::init()
 {
+    attachInterrupt(digitalPinToInterrupt(pirPin), wakeUp, CHANGE);
 }
 
 void SleepingTask::tick()
 {
-
-    if (sleeping && counter < 1)
+    if (sleeping)
     {
         Serial.println("Sleeping");
         set_sleep_mode(SLEEP_MODE_PWR_DOWN);
@@ -26,11 +29,6 @@ void SleepingTask::tick()
         // in this point arduino wake up
         sleep_disable();
         power_all_enable();
-        counter++;
-    }
-    else
-    {
-        sleeping = false;
         welcome = true;
     }
 }

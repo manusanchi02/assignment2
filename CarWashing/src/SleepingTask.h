@@ -1,6 +1,8 @@
 #ifndef __SLEEPIINGTASK__
 #define __SLEEPINGTASK__
 #include "Task.h"
+#include <avr/sleep.h>
+#include <avr/power.h>
 
 class SleepingTask : public Task
 {
@@ -8,7 +10,7 @@ public:
     /**
      * Class constructor.
      */
-    SleepingTask();
+    SleepingTask(int pirPin);
     /**
      * Init method.
      */
@@ -19,7 +21,7 @@ public:
     void tick();
 
 protected:
-    int counter;
+    int pirPin;
 };
 
 #endif

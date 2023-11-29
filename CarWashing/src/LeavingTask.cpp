@@ -2,9 +2,7 @@
 #define DISTANCE 60
 #define MAXDISTANCE 1000
 
-int distance;
-
-LeavingTask ::LeavingTask(int ledPin1, int ledPin2, int rows, int column, int gatePin, int echoPinIn, int trigPinOut)
+LeavingTask ::LeavingTask(int ledPin1, int ledPin2, int rows, int column, int gatePin, int echoPinIn, int trigPinOut, double maxDist)
 {
     this->ledPin1 = ledPin1;
     this->ledPin2 = ledPin2;
@@ -13,7 +11,7 @@ LeavingTask ::LeavingTask(int ledPin1, int ledPin2, int rows, int column, int ga
     this->gatePin = gatePin;
     this->echoPinIn = echoPinIn;
     this->trigPinOut = trigPinOut;
-    distance = 0;
+    this->maxDist = maxDist;
 }
 
 void LeavingTask ::init(int period)
@@ -21,26 +19,33 @@ void LeavingTask ::init(int period)
     led1 = new Led(ledPin1);
     led2 = new Led(ledPin2);
     lcd = new LcdMonitor(rows, column);
-    gate = new Gate(gatePin, 0, 90);
+    gate = new Gate(gatePin, 90, 0);
     distanceSensor = new Sonar(echoPinIn, trigPinOut);
     Task::init(period);
 }
 
 void LeavingTask ::tick()
 {
-    if (leaving && distance < DISTANCE)
+    if (leaving)
     {
         Serial.print("Leaving ");
         led1->switchOff();
         led2->switchOn();
-        lcd->setAndPrint("Washing complete, you can leave the area", 1, 0);
+        lcd->clean();
+        lcd->setAndPrint("Washing complete", 0, 0);
+        lcd->setAndPrint("You can leave the area", 0, 2);
         gate->setOpen();
-        delay(1000);
-        distance = distanceSensor->getDistance();
+        if (distanceSensor->getDistance() > this->maxDist)
+        {
+            counter += myPeriod;
+        }
+        else
+        {
+            counter = 0;
+        }
     }
-    else
+    if (counter > N4)
     {
-        distance = MAXDISTANCE;
         leaving = false;
         closing = true;
     }

@@ -28,6 +28,7 @@ bool Scheduler::addTask(Task* task){
   
 void Scheduler::schedule(){   
   while (!timerFlag){}
+  Timer1.setPeriod(1000l*basePeriod);
   timerFlag = false;
 
   for (int i = 0; i < nTasks; i++){

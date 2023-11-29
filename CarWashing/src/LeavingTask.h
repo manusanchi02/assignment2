@@ -17,8 +17,11 @@ public:
      * @param rows number of lcd rows
      * @param column number of lcd columns
      * @param gatePin number of the gate pin
+     * @param echoPinIn number of the echo pin
+     * @param trigPinOut number of the trig pin
+     * @param maxDist minimum distance
      */
-    LeavingTask(int ledPin1, int ledPin2, int rows, int column, int gatePin, int echoPinIn, int trigPinOut);
+    LeavingTask(int ledPin1, int ledPin2, int rows, int column, int gatePin, int echoPinIn, int trigPinOut, double maxDist);
     /**
      * Init method.
      * @param period task period
@@ -37,6 +40,8 @@ protected:
     int gatePin;
     int echoPinIn;
     int trigPinOut;
+    double maxDist;
+    int counter;
     Led *led1;
     Led *led2;
     LcdMonitor *lcd;

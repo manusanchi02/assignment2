@@ -15,8 +15,6 @@ public:
     /**
      * Init method.
      * @param period task period
-     * @param rows number of lcd rows
-     * @param columns number of lcd columns
      */
     void init(int period);
     /**
@@ -29,7 +27,6 @@ protected:
     int rows;
     int columns;
     int counter;
-    int period;
     Led *led;
     LcdMonitor *lcd;
 };

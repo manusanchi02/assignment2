@@ -18,6 +18,11 @@ public:
      */
     void setAndPrint(char *string, int xposition, int yposition);
 
+    /**
+     * Function to clean the lcd monitor.
+    */
+    void clean();
+
 protected:
     LiquidCrystal_I2C *lcd;
 };

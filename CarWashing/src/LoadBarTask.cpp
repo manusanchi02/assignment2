@@ -1,12 +1,11 @@
 #include "LoadBarTask.h"
-#define PERIOD 60
-
+#define BARCHAR "#"
 LoadBarTask ::LoadBarTask(int rows, int column)
 {
     this->rows = rows;
     this->column = column;
     counter = 0;
-    bar[0] = ' ';
+    bar = 1;
 }
 
 void LoadBarTask ::init(int period)
@@ -17,17 +16,20 @@ void LoadBarTask ::init(int period)
 
 void LoadBarTask ::tick()
 {
-    if (washing && counter < PERIOD)
+    if (washing)
     {
         Serial.println("Loading bar");
-        lcd->setAndPrint(bar, 0, 1);
-        strcat(bar, "*");
+        lcd->setAndPrint(BARCHAR, bar, 1);
+        counter += myPeriod;
+        if(counter % 1000 == 0) {
+            bar++;
+        }
     }
-    else
+    if (counter >= 10000)
     {
         washing = false;
         leaving = true;
         counter = 0;
-        strcpy(bar, "");
+        lcd->clean();
     }
 }

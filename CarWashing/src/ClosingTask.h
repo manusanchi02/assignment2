@@ -2,7 +2,7 @@
 #define __CLOSINGTASK__
 #include "Task.h"
 #include "Gate.h"
-#include "Sonar.h"
+#include "Led.h"
 
 class ClosingTask : public Task
 {
@@ -14,7 +14,7 @@ public:
      * @param trigPin number of the trig pin
      * @param maxDistance max distance to start closing
      */
-    ClosingTask(int gatePin, int gateOpen, int gateClose, int echoPin, int trigPin, float maxDistance);
+    ClosingTask(int gatePin, int gateOpen, int gateClose, int ledPin);
     /**
      * Init method.
      * @param period task period
@@ -27,13 +27,11 @@ public:
 
 protected:
     int gatePin;
-    int echoPin;
-    int trigPin;
     int gateOpen;
     int gateClose;
-    float maxDistance;
+    int ledPin;
     Gate *gate;
-    Sonar *sonar;
+    Led *led;
 };
 
 #endif
