@@ -35,11 +35,10 @@ void ReadyTask ::tick()
         lcd->clean();
         lcd->setAndPrint("Ready to wash", 1, 0);
         gate->setClose();
-    }
-    if (ready && buttonPressed)
-    {
-        buttonPressed = false;
-        washing = true;
-        ready = false;
+        if(buttonPressed) {
+            buttonPressed = false;
+            washing = true;
+            ready = false;
+        }
     }
 }

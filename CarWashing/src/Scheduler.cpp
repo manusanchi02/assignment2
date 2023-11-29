@@ -45,8 +45,8 @@ void Scheduler::schedule(){
   //Timer1Initialize();
   //Timer1setPeriod(timerHandler, 1000l*basePeriod);
   Timer1.attachInterrupt(timerHandler, 1000l*basePeriod);
-  long counter = TCNT1;
-  Serial.println(counter);
+  /*long counter = TCNT1;
+  Serial.println(counter);*/
   timerFlag = false;
 
   for (int i = 0; i < nTasks; i++){
