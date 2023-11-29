@@ -4,7 +4,7 @@
 volatile bool timerFlag;
 
 void timerHandler(void){
-  Serial.println("timerScattato");
+  //Serial.println("timerScattato");
   timerFlag = true;
 }
 
@@ -26,11 +26,27 @@ bool Scheduler::addTask(Task* task){
     return false; 
   }
 }
-  
+
+void Timer1Initialize() {
+    noInterrupts();
+    Timer1.initialize();
+    Timer1.stop();
+    interrupts();
+}
+
+void Timer1setPeriod(void (*isr)(), unsigned long microseconds) {
+    noInterrupts();
+    Timer1.attachInterrupt(isr, microseconds);
+    interrupts();
+}
+
 void Scheduler::schedule(){   
-  while (!timerFlag){
-  }
-  Timer1.setPeriod(1000l*basePeriod);
+  while (!timerFlag){}
+  //Timer1Initialize();
+  //Timer1setPeriod(timerHandler, 1000l*basePeriod);
+  Timer1.attachInterrupt(timerHandler, 1000l*basePeriod);
+  long counter = TCNT1;
+  Serial.println(counter);
   timerFlag = false;
 
   for (int i = 0; i < nTasks; i++){
@@ -39,3 +55,6 @@ void Scheduler::schedule(){
     }
   }
 }
+
+
+

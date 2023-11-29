@@ -35,6 +35,7 @@ void LeavingTask ::tick()
         lcd->setAndPrint("Washing complete", 0, 0);
         lcd->setAndPrint("You can leave the area", 0, 2);
         gate->setOpen();
+        Serial.println("boh");
         if (distanceSensor->getDistance() > this->maxDist)
         {
             counter += myPeriod;
