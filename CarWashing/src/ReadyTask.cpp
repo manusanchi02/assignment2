@@ -5,7 +5,7 @@ volatile bool buttonPressed = false;
 void buttonHandler()
 {
     buttonPressed = true;
-    Serial.println("Button pressed");
+    Serial.println("Button pressed sopra");
 }
 
 ReadyTask ::ReadyTask(int ledPin, int gatePin, int rows, int columns, int buttonPin)
@@ -36,6 +36,7 @@ void ReadyTask ::tick()
         lcd->setAndPrint("Ready to wash", 1, 0);
         gate->setClose();
         if(buttonPressed) {
+            Serial.println("Button pressed sotto");
             buttonPressed = false;
             washing = true;
             ready = false;
