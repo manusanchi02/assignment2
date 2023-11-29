@@ -27,7 +27,7 @@ defaultLayout = [  [sg.Text('Current Temperature:') ,sg.Text(currentTemp)],
 
 loginLayout = [  [sg.Text('Please enter COM port')],
             [sg.Text('COM Port Available:'),sg.Text(*portsList)],
-            [sg.Text('COM Port', size=(15, 1)), sg.InputText()],
+            [sg.Text('Enter the name:', size=(15, 1)), sg.InputText()],
             [sg.Button('Ok')]]
 
 
