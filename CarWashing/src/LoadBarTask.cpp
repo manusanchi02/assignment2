@@ -1,5 +1,5 @@
 #include "LoadBarTask.h"
-
+#define BARCHAR "#"
 LoadBarTask ::LoadBarTask(int rows, int column)
 {
     this->rows = rows;
@@ -19,7 +19,7 @@ void LoadBarTask ::tick()
     if (washing)
     {
         Serial.println("Loading bar");
-        lcd->setAndPrint("#", bar, 1);
+        lcd->setAndPrint(BARCHAR, bar, 1);
         counter += myPeriod;
         if(counter % 1000 == 0) {
             bar++;

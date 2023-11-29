@@ -19,8 +19,9 @@ void Gate::setOpen()
         for(this->pos = 0; this->pos <= this->open; pos++)
         {
             this->servo.write(pos);
-            Serial.println("aprendo ");
-            Serial.print(pos);
+            Serial.println("aprendo");
+            //Serial.print(pos);
+            Serial.print(this->servo.read());
         }
         this->state = true;
         this->servo.detach();
@@ -29,6 +30,7 @@ void Gate::setOpen()
 
 void Gate::setClose()
 {
+    Serial.println("devo chiudere");
     if(this->state) {
         this->servo.attach(pin);
         for(this->pos = this->open; this->pos >= this->close; pos--)

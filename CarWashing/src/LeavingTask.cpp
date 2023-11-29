@@ -2,9 +2,7 @@
 #define DISTANCE 60
 #define MAXDISTANCE 1000
 
-int distance;
-
-LeavingTask ::LeavingTask(int ledPin1, int ledPin2, int rows, int column, int gatePin, int echoPinIn, int trigPinOut)
+LeavingTask ::LeavingTask(int ledPin1, int ledPin2, int rows, int column, int gatePin, int echoPinIn, int trigPinOut, double maxDist)
 {
     this->ledPin1 = ledPin1;
     this->ledPin2 = ledPin2;
@@ -13,7 +11,7 @@ LeavingTask ::LeavingTask(int ledPin1, int ledPin2, int rows, int column, int ga
     this->gatePin = gatePin;
     this->echoPinIn = echoPinIn;
     this->trigPinOut = trigPinOut;
-    distance = 0;
+    this->maxDist = maxDist;
 }
 
 void LeavingTask ::init(int period)
@@ -34,10 +32,10 @@ void LeavingTask ::tick()
         led1->switchOff();
         led2->switchOn();
         lcd->clean();
-        lcd->setAndPrint("Washing complete, you can leave the area", 1, 0);
+        lcd->setAndPrint("Washing complete, you can leave the area", 0, 0);
+        lcd->setAndPrint("You can leave the area", 0, 2);
         gate->setOpen();
-        distance = distanceSensor->getDistance();
-        if (distance < minDist)
+        if (distanceSensor->getDistance() > this->maxDist)
         {
             counter += myPeriod;
         }
@@ -48,7 +46,6 @@ void LeavingTask ::tick()
     }
     if (counter > N4)
     {
-        distance = MAXDISTANCE;
         leaving = false;
         closing = true;
     }
