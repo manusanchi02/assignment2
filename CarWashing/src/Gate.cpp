@@ -8,30 +8,38 @@ Gate::Gate(int pin, int open, int close)
     this->close = close;
     this->state = false;
     this->pos = 0;
-    this->servo.attach(pin);
     this->servo.write(pos);
+    //delay(5);
 }
 
 void Gate::setOpen()
 {
-    for(this->pos; this->pos <= this->open; pos++)
-    {
-        this->servo.write(pos);
-        Serial.println("aprendo");
-        Serial.println(pos);
+    if(!this->state){
+        this->servo.attach(pin);
+        for(this->pos = 0; this->pos <= this->open; pos++)
+        {
+            this->servo.write(pos);
+            Serial.println("aprendo ");
+            Serial.print(pos);
+        }
+        this->state = true;
+        this->servo.detach();
     }
-    this->state = true;
 }
 
 void Gate::setClose()
 {
-    for(this->pos; this->pos >= this->close; pos--)
-    {
-        this->servo.write(pos);
-        Serial.println("chiudendo");
-        Serial.println(pos);
+    if(this->state) {
+        this->servo.attach(pin);
+        for(this->pos = this->open; this->pos >= this->close; pos--)
+        {
+            this->servo.write(pos);
+            Serial.println("chiudendo ");
+            Serial.print(pos);
+        }
+        this->state = false;
+        this->servo.detach();
     }
-    this->state = false;
 }
 
 bool Gate::isOpen()
