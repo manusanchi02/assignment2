@@ -4,6 +4,7 @@
 volatile bool timerFlag;
 
 void timerHandler(void){
+  Serial.println("timerScattato");
   timerFlag = true;
 }
 
@@ -27,7 +28,8 @@ bool Scheduler::addTask(Task* task){
 }
   
 void Scheduler::schedule(){   
-  while (!timerFlag){}
+  while (!timerFlag){
+  }
   Timer1.setPeriod(1000l*basePeriod);
   timerFlag = false;
 
