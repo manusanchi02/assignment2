@@ -53,7 +53,7 @@ void setup()
 	sched.addTask(t5);
 	Task *t6 = new LoadBarTask(LCDROWS, LCDCOLS);
 	t6->init(100);
-	sched.addTask(t6);/*
+	sched.addTask(t6);
 	Task *t7 = new LeavingTask(LEDPIN2, LEDPIN3, LCDROWS, LCDCOLS, GATEPIN, ECHOPIN, TRIGPIN, MAXDIST);
 	t7->init(200);
 	sched.addTask(t7);/*

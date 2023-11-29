@@ -33,7 +33,7 @@ void LeavingTask ::tick()
         led2->switchOn();
         lcd->clean();
         lcd->setAndPrint("Washing complete", 0, 0);
-        lcd->setAndPrint("You can leave the area", 0, 2);
+        lcd->setAndPrint("You can leave the area", 0, 1);
         gate->setOpen();
         Serial.println("boh");
         if (distanceSensor->getDistance() > this->maxDist)
@@ -47,6 +47,7 @@ void LeavingTask ::tick()
     }
     if (counter > N4)
     {
+        Serial.println("LeavingTask finished");
         leaving = false;
         closing = true;
     }

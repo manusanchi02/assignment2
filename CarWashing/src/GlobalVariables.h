@@ -1,10 +1,10 @@
 extern float minDist;
-extern bool isNear;
-extern bool washing;
-extern bool moving;
-extern bool welcome;
+extern volatile bool isNear;
+extern volatile bool washing;
+extern volatile bool moving;
+extern volatile bool welcome;
 extern volatile bool ready;
-extern bool closing;
+extern volatile bool closing;
 extern volatile bool sleeping;
-extern bool leaving;
-extern bool gateState;
+extern volatile bool leaving;
+extern volatile bool gateState;

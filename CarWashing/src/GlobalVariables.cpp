@@ -1,10 +1,10 @@
 #include "GlobalVariables.h"
-bool isNear = false;
-bool washing = false;
-bool moving =false;
-bool welcome = true;
+volatile bool isNear = false;
+volatile bool washing = false;
+volatile bool moving =false;
+volatile bool welcome = true;
 volatile bool ready = false;
-bool closing = false;
+volatile bool closing = false;
 volatile bool sleeping = false;
-bool leaving = false;
-bool gateState = false;
+volatile bool leaving = false;
+volatile bool gateState = false;
