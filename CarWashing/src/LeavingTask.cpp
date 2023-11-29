@@ -19,7 +19,7 @@ void LeavingTask ::init(int period)
     led1 = new Led(ledPin1);
     led2 = new Led(ledPin2);
     lcd = new LcdMonitor(rows, column);
-    gate = new Gate(gatePin, 0, 90);
+    gate = new Gate(gatePin, 90, 0);
     distanceSensor = new Sonar(echoPinIn, trigPinOut);
     Task::init(period);
 }

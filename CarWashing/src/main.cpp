@@ -60,7 +60,7 @@ void setup()
 	sched.addTask(t6);
 	Task *t7 = new LeavingTask(LEDPIN2, LEDPIN3, LCDROWS, LCDCOLS, GATEPIN, ECHOPIN, TRIGPIN, MAXDIST);
 	t7->init(200);
-	sched.addTask(t7);/*
+	sched.addTask(t7);
 	Task *t8 = new ClosingTask(GATEPIN, GATEOPEN, GATECLOSE, LEDPIN3);
 	t8->init(200);
 	sched.addTask(t8);/*

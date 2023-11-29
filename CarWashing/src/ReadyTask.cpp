@@ -20,7 +20,7 @@ ReadyTask ::ReadyTask(int ledPin, int gatePin, int rows, int columns, int button
 void ReadyTask ::init(int period)
 {
     led = new Led(ledPin);
-    gate = new Gate(this->gatePin, 0, 90);
+    gate = new Gate(this->gatePin, 90, 0);
     lcd = new LcdMonitor(rows, columns);
     attachInterrupt(digitalPinToInterrupt(buttonPin), buttonHandler, CHANGE);
     Task::init(period);

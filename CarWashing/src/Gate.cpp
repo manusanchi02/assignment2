@@ -16,7 +16,7 @@ void Gate::setOpen()
 {
     Serial.println("devo aprire");
     Serial.println(gateState);
-    if(gateState) {
+    if(!gateState) {
         this->servo.attach(pin);
         for(int i = 0; i < this->open; i++) {
             this->pos+=DELTA;
@@ -56,11 +56,14 @@ void Gate::setClose()
     if(gateState) {
         Serial.println("entrato");
         this->servo.attach(pin);
-        for(int i = 0; i < this->open; i++) {
+        Serial.println("attaccato");
+        for(int a = 0; a < this->open; a++) {
+            Serial.println("entrato nel for");
             this->pos-=DELTA;
             this->servo.write(pos);
             Serial.println(pos);
         }
+        Serial.println("uscito dal for");
         gateState = false;
         this->servo.detach();
     }
