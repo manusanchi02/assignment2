@@ -32,10 +32,4 @@ void WashBlinkTask::tick()
         }
         counter += myPeriod;
     }
-    if (counter >= N4 )
-    {
-        counter = 0;
-        washing = false;
-        leaving = true;
-    }
 }

@@ -9,8 +9,8 @@
 #include "WashBlinkTask.h"
 #include "Scheduler.h"
 #include "WelcomeTask.h"
-#define MAXDIST 0.40
-#define MINDIST 0.10
+#define MAXDIST 0.80
+#define MINDIST 0.30
 #define LEDPIN1 13
 #define LEDPIN2 12
 #define LEDPIN3 11
@@ -46,13 +46,13 @@ void setup()
 	sched.addTask(t3);
 	Task *t4 = new ReadyTask(LEDPIN2, GATEPIN, LCDROWS, LCDCOLS, BUTTONPIN);
 	t4->init(100);
-	sched.addTask(t4);/*
+	sched.addTask(t4);
 	Task *t5 = new WashBlinkTask(LEDPIN3);
 	t5->init(100);
 	sched.addTask(t5);
 	Task *t6 = new LoadBarTask(LCDROWS, LCDCOLS);
 	t6->init(100);
-	sched.addTask(t6);
+	sched.addTask(t6);/*
 	Task *t7 = new LeavingTask(LEDPIN2, LEDPIN3, LCDROWS, LCDCOLS, GATEPIN, ECHOPIN, TRIGPIN);
 	t7->init(200);
 	sched.addTask(t7);

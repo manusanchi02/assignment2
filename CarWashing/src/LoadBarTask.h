@@ -25,7 +25,7 @@ protected:
     int rows;
     int column;
     int counter;
-    char *bar;
+    int bar;
     LcdMonitor *lcd;
 };
 
