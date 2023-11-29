@@ -32,7 +32,7 @@ void LeavingTask ::tick()
         led1->switchOff();
         led2->switchOn();
         lcd->clean();
-        lcd->setAndPrint("Washing complete, you can leave the area", 0, 0);
+        lcd->setAndPrint("Washing complete", 0, 0);
         lcd->setAndPrint("You can leave the area", 0, 2);
         gate->setOpen();
         if (distanceSensor->getDistance() > this->maxDist)

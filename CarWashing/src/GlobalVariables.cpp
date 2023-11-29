@@ -7,3 +7,4 @@ bool ready = false;
 bool closing = false;
 volatile bool sleeping = false;
 bool leaving = false;
+bool gateState = false;

@@ -9,6 +9,7 @@
 #include "WashBlinkTask.h"
 #include "Scheduler.h"
 #include "WelcomeTask.h"
+#include "Gate.h"
 #define MAXDIST 0.80
 #define MINDIST 0.30
 #define LEDPIN1 13
@@ -30,6 +31,10 @@ Scheduler sched;
 void setup()
 {
 	Serial.begin(9600);
+	/*Gate *gate;
+	gate = new Gate(GATEPIN, GATEOPEN, GATECLOSE);
+	gate->setOpen();
+	delay(2000);*/
 	sched.init(100);
 
 	Task *t0 = new WelcomeTask(LEDPIN1, LCDROWS, LCDCOLS);

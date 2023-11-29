@@ -7,3 +7,4 @@ extern bool ready ;
 extern bool closing ;
 extern volatile bool sleeping ;
 extern bool leaving ;
+extern bool gateState;

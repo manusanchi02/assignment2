@@ -15,7 +15,6 @@ protected:
     int pin;
     int open;
     int close;
-    bool state;
     int pos;
     Servo servo;
 };
