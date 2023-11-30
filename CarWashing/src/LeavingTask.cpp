@@ -52,5 +52,6 @@ void LeavingTask ::tick()
         lcd->clean();
         leaving = false;
         closing = true;
+        counter = 0;
     }
 }

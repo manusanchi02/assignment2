@@ -4,7 +4,6 @@
 WashBlinkTask::WashBlinkTask(int pin)
 {
     this->pin = pin;
-    counter = 0;
 }
 
 void WashBlinkTask::init(int period)
@@ -30,6 +29,5 @@ void WashBlinkTask::tick()
             state = OFF;
             break;
         }
-        counter += myPeriod;
     }
 }

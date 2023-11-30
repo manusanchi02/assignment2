@@ -23,7 +23,6 @@ public:
 
 protected:
     int pin;
-    int counter;
     Led *led;
     enum
     {
