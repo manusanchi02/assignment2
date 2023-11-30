@@ -21,10 +21,10 @@ for onePort in ports:
 
 sg.theme('LightBlue')  # Add a touch of color
 # All the stuff inside your window.
-defaultLayout = [  [sg.Text('Current Temperature:') ,sg.Text(currentTemp),key='-TEMP-')],
-            [sg.Text('Total Car Washed:') ,sg.Text(totalWash),key='-WASH-')],
-            [sg.Text('Current State:') ,sg.Text(currentState),key='-STATE-')],
-            [sg.Text('Error:') ,sg.Text(errors),key='-ERROR-')]]
+defaultLayout = [  [sg.Text('Current Temperature:') ,sg.Text(currentTemp,key='-TEMP-')],
+            [sg.Text('Total Car Washed:') ,sg.Text(totalWash,key='-WASH-')],
+            [sg.Text('Current State:') ,sg.Text(currentState,key='-STATE-')],
+            [sg.Text('Error:') ,sg.Text(errors,key='-ERROR-')]]
 
 loginLayout = [  [sg.Text('Please enter COM port')],
             [sg.Text('COM Port Available:'),sg.Text(*portsList)],
