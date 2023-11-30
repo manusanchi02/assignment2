@@ -56,7 +56,6 @@ while True:
         window.close()
         break
     if event == restartButton:
-        serialInst.write(b'restart')
         print('Restarting')
         defaultLayout.remove([sg.Button('Restart')])
 
@@ -73,15 +72,12 @@ while True:
             defaultLayout.remove([sg.Button('Restart')])
             window['-ERROR-'].update(errors)
         if packet.decode('utf').rstrip('\n') == 'temp':
-            serialInst.write(b'temp')
             currentTemp = packet.decode('utf').rstrip()
             window['-TEMP-'].update(currentTemp)
         if packet.decode('utf').rstrip('\n') == 'wash':
-            serialInst.write(b'wash')
             totalWash = packet.decode('utf').rstrip()
             window['-WASH-'].update(totalWash)
         if packet.decode('utf').rstrip('\n') == 'state':
-            serialInst.write(b'state')
             currentState = packet.decode('utf').rstrip()
             window['-STATE-'].update(currentState)
         
