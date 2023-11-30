@@ -23,7 +23,6 @@ void MovingTask ::tick()
 {
     if (moving && !isNear)
     {
-        //Serial.println("Moving");
         lcd->clean();
         lcd->setAndPrint("Proceed to the Washing Area", 1, 0);
         gate->setOpen();

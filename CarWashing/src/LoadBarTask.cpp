@@ -17,8 +17,7 @@ void LoadBarTask ::init(int period)
 void LoadBarTask ::tick()
 {
     if (washing)
-    {
-        //Serial.println("Loading bar");
+    {;
         lcd->setAndPrint("Current status: ", 0, 0);
         lcd->setAndPrint(BARCHAR, bar, 1);
         counter += myPeriod;

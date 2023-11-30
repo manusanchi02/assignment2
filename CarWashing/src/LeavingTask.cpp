@@ -29,7 +29,6 @@ void LeavingTask ::tick()
 {
     if (leaving)
     {
-        //Serial.print("Leaving ");
         led1->switchOff();
         led2->switchOn();
         lcd->clean();
@@ -37,7 +36,6 @@ void LeavingTask ::tick()
         lcd->setAndPrint("You can leave", 0, 1);
         lcd->setAndPrint("The area", 0, 2);
         gate->setOpen();
-        //Serial.println(distanceSensor->getDistance());
         if (distanceSensor->getDistance() > this->maxDist)
         {
             counter += myPeriod;

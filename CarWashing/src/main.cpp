@@ -61,7 +61,7 @@ void setup()
 	Task *t8 = new ClosingTask(GATEPIN, GATEOPEN, GATECLOSE, LEDPIN3);
 	t8->init(300);
 	sched.addTask(t8);
-	Task *t9 = new SleepingTask(PIRPIN);
+	Task *t9 = new SleepingTask(PIRPIN, LEDPIN1);
 	t9->init(50);
 	sched.addTask(t9);
 }
