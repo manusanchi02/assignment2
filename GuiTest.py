@@ -52,11 +52,12 @@ while True:
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
         break
     if event == restartButton:
-        #serialInst.write(b'1')
+        serialInst.write(b'restart')
         print('Restarting')
+        defaultLayout.remove([sg.Button('Restart')])
     if serialInst.in_waiting:
         packet = serialInst.readline()
-        if packet.decode('utf').rstrip('error') == 'error':
+        if packet.decode('utf').rstrip('\n') == 'error':
             errors = 'Error'
             errore = True
             defaultLayout.append([sg.Button('Restart')])
@@ -64,12 +65,16 @@ while True:
             errors = 'No Errors'
             errore = False
             defaultLayout.remove([sg.Button('Restart')])
-        if packet.decode('utf').rstrip('temp') == 'temp':
-            currentTemp = packet.decode('utf').rstrip('temp')
-        if packet.decode('utf').rstrip('wash') == 'wash':
-            totalWash = packet.decode('utf').rstrip('wash')
-        if packet.decode('utf').rstrip('state') == 'state':
-            currentState = packet.decode('utf').rstrip('state')
+        if packet.decode('utf').rstrip('\n') == 'temp':
+            serialInst.write(b'temp')
+            currentTemp = packet.decode('utf').rstrip()
+        if packet.decode('utf').rstrip('\n') == 'wash':
+            serialInst.write(b'wash')
+            totalWash = packet.decode('utf').rstrip()
+        if packet.decode('utf').rstrip('\n') == 'state':
+            serialInst.write(b'state')
+            currentState = packet.decode('utf').rstrip()
+        
 
 
 window.close()
