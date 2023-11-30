@@ -34,6 +34,7 @@ void SleepingTask::tick()
         power_all_enable();
         welcome = true;
         sleeping = false;
+        carCounter++;
         detachInterrupt(digitalPinToInterrupt(pirPin));
     }
 }

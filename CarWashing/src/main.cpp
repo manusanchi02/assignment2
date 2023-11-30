@@ -10,6 +10,8 @@
 #include "Scheduler.h"
 #include "WelcomeTask.h"
 #include "Gate.h"
+#include "TemperatureSensor.h"
+#include "GlobalVariables.h"
 #define MAXDIST 0.80
 #define MINDIST 0.30
 #define LEDPIN1 13
@@ -24,16 +26,18 @@
 #define ECHOPIN 8
 #define BUTTONPIN 3
 #define PIRPIN 2
+#define TEMPERATUREPIN A0
 
 
 Scheduler sched;
-
+TemperatureSensor *ts;
 
 void setup()
 {
 	Serial.begin(9600);
 	sched.init(100);
-	
+	ts = new TemperatureSensor(TEMPERATUREPIN);
+
 	Task *t0 = new WelcomeTask(LEDPIN1, LCDROWS, LCDCOLS);
 	t0->init(200);
 	sched.addTask(t0);
@@ -68,5 +72,30 @@ void setup()
 void loop()
 {
 	sched.schedule();
-	Serial.print("x");
+	Serial.print(serialCommunication());
+}
+
+String serialCommunication() {
+	char* message = "";
+	char* state = "State: ";
+	if(welcome)
+		state = "Welcome";
+	else if(moving)
+		state = "Moving";
+	else if(ready)
+		state = "Ready";
+	else if(leaving)
+		state = "Leaving";
+	else if(closing)
+		state = "Closing";
+	else if(sleeping)
+		state = "Sleeping";
+	char* temperature = "Temperature: ";
+	temperature = ts->getTemperature();
+	char* cars = "Car Counter: ";
+	cars = carCounter;
+	strcat(state, message);
+	strcat(temperature, message);
+	strcat(cars, message);
+	return message;
 }
