@@ -10,15 +10,16 @@ SleepingTask::SleepingTask(int pirPin)
     this->pirPin = pirPin;
 }
 
-void SleepingTask::init()
+void SleepingTask::init(int period)
 {
-    attachInterrupt(digitalPinToInterrupt(pirPin), wakeUp, CHANGE);
+    Task::init(period);
 }
 
 void SleepingTask::tick()
 {
     if (sleeping)
     {
+        attachInterrupt(digitalPinToInterrupt(pirPin), wakeUp, CHANGE);
         Serial.println("Sleeping");
         set_sleep_mode(SLEEP_MODE_PWR_DOWN);
         sleep_enable();
@@ -32,5 +33,6 @@ void SleepingTask::tick()
         power_all_enable();
         welcome = true;
         sleeping = false;
+        detachInterrupt(digitalPinToInterrupt(pirPin));
     }
 }

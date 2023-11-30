@@ -1,6 +1,8 @@
 #include "ReadyTask.h"
-#define PERIOD 60
+//#include <EnableInterrupt.h>
+
 volatile bool buttonPressed = false;
+volatile bool interruptEnabled = false;
 
 void buttonHandler()
 {
@@ -22,7 +24,7 @@ void ReadyTask ::init(int period)
     led = new Led(ledPin);
     gate = new Gate(this->gatePin, 90, 0);
     lcd = new LcdMonitor(rows, columns);
-    attachInterrupt(digitalPinToInterrupt(buttonPin), buttonHandler, CHANGE);
+    //enableInterrupt(buttonPin, buttonHandler, CHANGE);
     Task::init(period);
 }
 
@@ -30,6 +32,9 @@ void ReadyTask ::tick()
 {
     if (ready)
     {
+        if(!interruptEnabled) {
+            attachInterrupt(digitalPinToInterrupt(buttonPin), buttonHandler, CHANGE);
+        }
         Serial.println("Ready");
         led->switchOn();
         lcd->clean();
@@ -41,6 +46,8 @@ void ReadyTask ::tick()
             washing = true;
             ready = false;
             lcd->clean();
+            //disableInterrupt(buttonPin);
+            detachInterrupt(digitalPinToInterrupt(buttonPin));
         }
     }
 }

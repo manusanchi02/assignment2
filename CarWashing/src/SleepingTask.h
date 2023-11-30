@@ -13,8 +13,9 @@ public:
     SleepingTask(int pirPin);
     /**
      * Init method.
+     * @param period the period of the task.
      */
-    void init();
+    void init(int period);
     /**
      * Tick method.
      */
