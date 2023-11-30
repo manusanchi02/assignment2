@@ -37,19 +37,20 @@ window = sg.Window('Arduino Controller', loginLayout)
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
+        window.close()
         break
     if event == 'Ok':
         comPort = values[0]
         serialInst.baudrate = 9600
         serialInst.port = comPort
         serialInst.open()
-        window.close()
         break
 
 while True:
     window = sg.Window('Arduino Controller', defaultLayout)
     event, values = window.read(timeout=100)
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
+        window.close()
         break
     if event == restartButton:
         serialInst.write(b'restart')
