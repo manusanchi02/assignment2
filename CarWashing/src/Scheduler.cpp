@@ -1,5 +1,4 @@
 #include "Scheduler.h"
-#include <TimerOne.h>
 #include "GlobalVariables.h"
 
 volatile long currentMillis = 0;

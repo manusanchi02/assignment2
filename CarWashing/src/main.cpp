@@ -32,6 +32,27 @@
 Scheduler sched;
 TemperatureSensor *ts;
 
+String serialCommunication() {
+	String message = "";
+	String state = "State: ";
+	if(welcome)
+		state = "Welcome";
+	else if(moving)
+		state = "Moving";
+	else if(ready)
+		state = "Ready";
+	else if(leaving)
+		state = "Leaving";
+	else if(closing)
+		state = "Closing";
+	else if(sleeping)
+		state = "Sleeping";
+	String temperature = "Temperature: " + String(ts->getTemperature());
+	String cars = "Car Counter: " + String(carCounter);
+	message = state + " " + temperature + " " + cars;
+	return message;
+}
+
 void setup()
 {
 	Serial.begin(9600);
@@ -73,29 +94,4 @@ void loop()
 {
 	sched.schedule();
 	Serial.print(serialCommunication());
-}
-
-String serialCommunication() {
-	char* message = "";
-	char* state = "State: ";
-	if(welcome)
-		state = "Welcome";
-	else if(moving)
-		state = "Moving";
-	else if(ready)
-		state = "Ready";
-	else if(leaving)
-		state = "Leaving";
-	else if(closing)
-		state = "Closing";
-	else if(sleeping)
-		state = "Sleeping";
-	char* temperature = "Temperature: ";
-	temperature = ts->getTemperature();
-	char* cars = "Car Counter: ";
-	cars = carCounter;
-	strcat(state, message);
-	strcat(temperature, message);
-	strcat(cars, message);
-	return message;
 }
