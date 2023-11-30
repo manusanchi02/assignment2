@@ -12,6 +12,7 @@ LeavingTask ::LeavingTask(int ledPin1, int ledPin2, int rows, int column, int ga
     this->echoPinIn = echoPinIn;
     this->trigPinOut = trigPinOut;
     this->maxDist = maxDist;
+    this->counter = 0;
 }
 
 void LeavingTask ::init(int period)
@@ -28,14 +29,15 @@ void LeavingTask ::tick()
 {
     if (leaving)
     {
-        Serial.print("Leaving ");
+        //Serial.print("Leaving ");
         led1->switchOff();
         led2->switchOn();
         lcd->clean();
         lcd->setAndPrint("Washing complete", 0, 0);
-        lcd->setAndPrint("You can leave the area", 0, 1);
+        lcd->setAndPrint("You can leave", 0, 1);
+        lcd->setAndPrint("The area", 0, 2);
         gate->setOpen();
-        Serial.println("boh");
+        //Serial.println(distanceSensor->getDistance());
         if (distanceSensor->getDistance() > this->maxDist)
         {
             counter += myPeriod;
@@ -47,7 +49,7 @@ void LeavingTask ::tick()
     }
     if (counter > N4)
     {
-        Serial.println("LeavingTask finished");
+        lcd->clean();
         leaving = false;
         closing = true;
     }

@@ -14,73 +14,35 @@ Gate::Gate(int pin, int open, int close)
 
 void Gate::setOpen()
 {
-    //Serial.println(gateState);
+    ////Serial.println(gateState);
+    //this->pos = 0;
     if(!gateState) {
         this->servo.attach(pin);
         for(int i = 0; i < this->open; i++) {
             this->pos+=DELTA;
             this->servo.write(pos);
-            Serial.println(pos);
+            //Serial.println(pos);
         }
         gateState = true;
         this->servo.detach();
     }
-    /*if(!this->state){
-        this->servo.attach(pin);
-        Serial.print(this->servo.read());
-        for(int i = 0; i < this->open; i++)
-        {
-            pos+=DELTA;
-            this->servo.write(pos);
-            Serial.println("aprendo");
-            //Serial.print(pos);
-            Serial.print(this->servo.read());
-        }
-        /*if(pos < this->open) {
-            pos+=DELTA;
-            this->servo.write(pos);
-            Serial.println("aprendo");
-            Serial.print(this->servo.read());
-        } else {
-            this->state = true;
-            this->servo.detach();
-        }
-    }*/
 }
 
 void Gate::setClose()
 {
-    //Serial.println(gateState);
+    ////Serial.println(gateState);
+    //this->pos = 90;
     if(gateState) {
         this->servo.attach(pin);
         for(int a = 0; a < this->open; a++) {
 
             this->pos-=DELTA;
             this->servo.write(pos);
-            Serial.println(pos);
+            //Serial.println(pos);
         }
         gateState = false;
         this->servo.detach();
     }
-
-/*
-    Serial.println("devo chiudere");
-    if(this->state) {
-        this->servo.attach(pin);
-        for(int i = 0; i < this->open; i++)
-        {
-            pos-=DELTA;
-            this->servo.write(pos);
-            Serial.println("aprendo");
-            //Serial.print(pos);
-            Serial.print(this->servo.read());
-        }
-        this->servo.write(this->close);
-        this->state = false;
-        Serial.println("La distanza è: ");
-        Serial.print(this->servo.read());
-        this->servo.detach();
-    }*/
 }
 
 bool Gate::isOpen()

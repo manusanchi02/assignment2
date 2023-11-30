@@ -10,18 +10,14 @@ Led::Led(int pin)
 
 void Led::switchOn()
 {
-    if(!this->isOn()) {
-        digitalWrite(pin, HIGH);
-        this->state = true;
-    }
+    digitalWrite(pin, HIGH);
+    this->state = true;
 }
 
 void Led::switchOff()
 {
-    if(this->isOn()) {
-        digitalWrite(pin, LOW);
-        this->state = false;
-    }
+    digitalWrite(pin, LOW);
+    this->state = false;
 }
 
 bool Led::isOn()

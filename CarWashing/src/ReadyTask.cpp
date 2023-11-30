@@ -36,10 +36,11 @@ void ReadyTask ::tick()
         lcd->setAndPrint("Ready to wash", 1, 0);
         gate->setClose();
         if(buttonPressed) {
-            Serial.println("Button pressed sotto");
+            //Serial.println("Button pressed sotto");
             buttonPressed = false;
             washing = true;
             ready = false;
+            lcd->clean();
         }
     }
 }

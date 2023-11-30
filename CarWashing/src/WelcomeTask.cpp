@@ -19,7 +19,7 @@ void WelcomeTask ::tick()
 {
     if (welcome)
     {
-        Serial.println("Welcome");
+        //Serial.println("Welcome");
         led->switchOn();
         lcd->clean();
         lcd->setAndPrint("Welcome", 1, 0);
@@ -27,7 +27,7 @@ void WelcomeTask ::tick()
     }
     if(counter >= N1)
     {
-        Serial.println("fine Welcome");
+        //Serial.println("fine Welcome");
         counter = 0;
         moving = true;
         welcome = false;
