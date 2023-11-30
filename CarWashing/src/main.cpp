@@ -38,7 +38,7 @@ void setup()
 	t0->init(200);
 	sched.addTask(t0);
 	Task *t1 = new MovingTask(LCDROWS, LCDCOLS, GATEPIN, GATEOPEN, GATECLOSE);
-	t1->init(300);
+	t1->init(400);
 	sched.addTask(t1);
 	Task *t2 = new BlinkTask(LEDPIN2);
 	t2->init(250);
@@ -46,7 +46,7 @@ void setup()
 	Task *t3 = new ApproachTask(TRIGPIN, ECHOPIN, MINDIST);
 	t3->init(200);
 	sched.addTask(t3);
-	Task *t4 = new ReadyTask(LEDPIN2, GATEPIN, LCDROWS, LCDCOLS, BUTTONPIN);
+	Task *t4 = new ReadyTask(LEDPIN2, GATEPIN, GATEOPEN, GATECLOSE, LCDROWS, LCDCOLS, BUTTONPIN);
 	t4->init(200);
 	sched.addTask(t4);
 	Task *t5 = new WashBlinkTask(LEDPIN3);
@@ -55,11 +55,11 @@ void setup()
 	Task *t6 = new LoadBarTask(LCDROWS, LCDCOLS);
 	t6->init(100);
 	sched.addTask(t6);
-	Task *t7 = new LeavingTask(LEDPIN2, LEDPIN3, LCDROWS, LCDCOLS, GATEPIN, ECHOPIN, TRIGPIN, MAXDIST);
+	Task *t7 = new LeavingTask(LEDPIN2, LEDPIN3, LCDROWS, LCDCOLS, GATEPIN, GATEOPEN, GATECLOSE, ECHOPIN, TRIGPIN, MAXDIST);
 	t7->init(300);
 	sched.addTask(t7);
 	Task *t8 = new ClosingTask(GATEPIN, GATEOPEN, GATECLOSE, LEDPIN3);
-	t8->init(300);
+	t8->init(400);
 	sched.addTask(t8);
 	Task *t9 = new SleepingTask(PIRPIN, LEDPIN1);
 	t9->init(50);

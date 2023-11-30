@@ -21,7 +21,7 @@ public:
      * @param trigPinOut number of the trig pin
      * @param maxDist minimum distance
      */
-    LeavingTask(int ledPin1, int ledPin2, int rows, int column, int gatePin, int echoPinIn, int trigPinOut, double maxDist);
+    LeavingTask(int ledPin1, int ledPin2, int rows, int column, int gatePin, int gateClose, int gateOpen, int echoPinIn, int trigPinOut, double maxDist);
     /**
      * Init method.
      * @param period task period
@@ -41,6 +41,8 @@ protected:
     int echoPinIn;
     int trigPinOut;
     double maxDist;
+    int gateClose;
+    int gateOpen;
     int counter;
     Led *led1;
     Led *led2;
