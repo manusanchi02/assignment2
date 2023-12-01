@@ -24,7 +24,8 @@ void MovingTask ::tick()
     if (moving && !isNear)
     {
         lcd->clean();
-        lcd->setAndPrint("Proceed to the Washing Area", 1, 0);
+        lcd->setAndPrint("Proceed to the", 0, 0);
+        lcd->setAndPrint("Washing Area", 0, 1);
         gate->setOpen();
     }
     if (moving && isNear)
