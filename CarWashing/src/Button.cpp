@@ -1,6 +1,6 @@
 #include "Button.h"
 #include <Arduino.h>
-#define FIXAMOUNT 300
+#define FIXAMOUNT 50
 
 long previousTime;
 

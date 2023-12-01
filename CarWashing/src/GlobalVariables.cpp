@@ -8,3 +8,4 @@ volatile bool closing = false;
 volatile bool sleeping = false;
 volatile bool isNear = false;
 volatile bool gateState = false;
+volatile int carCounter = 0;

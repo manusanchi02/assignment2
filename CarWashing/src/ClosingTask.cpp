@@ -21,14 +21,11 @@ void ClosingTask ::tick()
 {
     if (closing)
     {
-        //Serial.println("Closing");
         gate->setClose();
         led->switchOff();
         counter += myPeriod;
-        Serial.println(counter);
     }
     if (counter > N2) {
-        Serial.println("fine closing");
         sleeping = true;
         closing = false;
         counter = 0;

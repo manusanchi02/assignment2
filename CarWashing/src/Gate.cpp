@@ -1,7 +1,7 @@
 #include "Gate.h"
 #include <Arduino.h>
 #include "GlobalVariables.h"
-#define DELTA 1
+#define DELTA 2
 
 
 Gate::Gate(int pin, int open, int close)
@@ -14,14 +14,13 @@ Gate::Gate(int pin, int open, int close)
 
 void Gate::setOpen()
 {
-    ////Serial.println(gateState);
-    //this->pos = 0;
+    this->pos = 0;
     if(!gateState) {
         this->servo.attach(pin);
         for(int i = 0; i < this->open; i++) {
             this->pos+=DELTA;
             this->servo.write(pos);
-            //Serial.println(pos);
+            Serial.println(pos);
         }
         gateState = true;
         this->servo.detach();
@@ -30,15 +29,13 @@ void Gate::setOpen()
 
 void Gate::setClose()
 {
-    ////Serial.println(gateState);
-    //this->pos = 90;
+    this->pos = 90;
     if(gateState) {
         this->servo.attach(pin);
         for(int a = 0; a < this->open; a++) {
-
             this->pos-=DELTA;
             this->servo.write(pos);
-            //Serial.println(pos);
+            Serial.println(pos);
         }
         gateState = false;
         this->servo.detach();

@@ -17,7 +17,6 @@ void WashBlinkTask::tick()
 {
     if (washing)
     {
-        //Serial.print("Washing ");
         switch (state)
         {
         case OFF:

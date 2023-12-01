@@ -17,7 +17,7 @@ public:
      * @param trigPin number of the trig pin
      * @param minDistance minimum distance to start washing
      */
-    ReadyTask(int ledPin, int gatePin, int rows, int columns, int buttonPin);
+    ReadyTask(int ledPin, int gatePin, int gateOpen, int gateClose, int rows, int columns, int buttonPin);
     /**
      * Init method.
      * @param period task period
@@ -36,6 +36,8 @@ protected:
     int rows;
     int columns;
     int buttonPin;
+    int gateOpen;
+    int gateClose;
     Led *led;
     Gate *gate;
     LcdMonitor *lcd;
