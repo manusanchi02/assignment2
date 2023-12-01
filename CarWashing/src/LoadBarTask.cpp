@@ -5,7 +5,7 @@ LoadBarTask ::LoadBarTask(int rows, int column)
     this->rows = rows;
     this->column = column;
     counter = 0;
-    bar = 1;
+    bar = 0;
 }
 
 void LoadBarTask ::init(int period)
@@ -20,12 +20,14 @@ void LoadBarTask ::tick()
     {;
         lcd->setAndPrint("Current status: ", 0, 0);
         lcd->setAndPrint(BARCHAR, bar, 1);
+        lcd->setAndPrint(BARCHAR, bar, 2);
+        lcd->setAndPrint(BARCHAR, bar, 3);
         counter += myPeriod;
-        if(counter % 1000 == 0) {
+        if(counter % 200 == 0) {
             bar++;
         }
     }
-    if (counter >= 10000)
+    if (counter >= 4000)
     {
         washing = false;
         leaving = true;

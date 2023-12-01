@@ -17,13 +17,14 @@
 #include "Gate.h"
 #include "TemperatureSensor.h"
 #include "GlobalVariables.h"
+#include "LcdMonitor.h"
 #define MAXDIST 0.80
 #define MINDIST 0.30
 #define LEDPIN1 13
 #define LEDPIN2 12
 #define LEDPIN3 11
-#define LCDROWS 3
-#define LCDCOLS 16
+#define LCDROWS 4
+#define LCDCOLS 20
 #define GATEPIN 9
 #define GATEOPEN 90
 #define GATECLOSE 0
@@ -36,7 +37,7 @@
 
 Scheduler sched;
 TemperatureSensor *ts;
-
+LcdMonitor *lcd;
 String serialCommunication() {
 	String message = "";
 	String state = "State: ";
@@ -60,9 +61,14 @@ String serialCommunication() {
 
 void setup()
 {
+	ts = new TemperatureSensor(TEMPERATUREPIN);
+	lcd = new LcdMonitor(LCDROWS, LCDCOLS);
+	// calibrate sensors
+	lcd->setAndPrint("Calibrating sensors", 0, 0);
+	delay(10000);
+
 	Serial.begin(9600);
 	sched.init(100);
-	ts = new TemperatureSensor(TEMPERATUREPIN);
 
 	Task *t0 = new WelcomeTask(LEDPIN1, LCDROWS, LCDCOLS);
 	t0->init(200);
@@ -85,7 +91,7 @@ void setup()
 	Task *t6 = new LoadBarTask(LCDROWS, LCDCOLS);
 	t6->init(100);
 	sched.addTask(t6);
-	Task *t7 = new LeavingTask(LEDPIN2, LEDPIN3, LCDROWS, LCDCOLS, GATEPIN, GATEOPEN, GATECLOSE, ECHOPIN, TRIGPIN, MAXDIST);
+	Task *t7 = new LeavingTask(LEDPIN2, LEDPIN3, LCDROWS, LCDCOLS, GATEPIN, GATECLOSE, GATEOPEN, ECHOPIN, TRIGPIN, MAXDIST);
 	t7->init(300);
 	sched.addTask(t7);
 	Task *t8 = new ClosingTask(GATEPIN, GATEOPEN, GATECLOSE, LEDPIN3);
