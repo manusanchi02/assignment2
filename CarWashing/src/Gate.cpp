@@ -20,6 +20,7 @@ void Gate::setOpen()
         for(int i = 0; i < this->open; i++) {
             this->pos+=DELTA;
             this->servo.write(pos);
+            Serial.println(pos);
         }
         gateState = true;
         this->servo.detach();
@@ -34,6 +35,7 @@ void Gate::setClose()
         for(int a = 0; a < this->open; a++) {
             this->pos-=DELTA;
             this->servo.write(pos);
+            Serial.println(pos);
         }
         gateState = false;
         this->servo.detach();
