@@ -30,7 +30,7 @@ void ReadyTask ::init(int period)
 
 void ReadyTask ::tick()
 {
-    if (ready)
+    if (ready && !error)
     {
         led->switchOn();
         lcd->clean();

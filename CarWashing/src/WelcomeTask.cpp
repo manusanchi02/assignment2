@@ -17,7 +17,7 @@ void WelcomeTask ::init(int period)
 
 void WelcomeTask ::tick()
 {
-    if (welcome)
+    if (welcome && !error)
     {
         led->switchOn();
         lcd->clean();

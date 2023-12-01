@@ -1,4 +1,5 @@
 #include "GlobalVariables.h"
+volatile bool error = false;
 volatile bool welcome = true;
 volatile bool moving =false;
 volatile bool ready = false;

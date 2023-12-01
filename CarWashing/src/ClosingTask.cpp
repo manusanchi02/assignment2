@@ -19,7 +19,7 @@ void ClosingTask ::init(int period)
 
 void ClosingTask ::tick()
 {
-    if (closing)
+    if (closing && !error)
     {
         gate->setClose();
         led->switchOff();

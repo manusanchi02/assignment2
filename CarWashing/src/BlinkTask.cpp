@@ -14,7 +14,7 @@ void BlinkTask::init(int period)
 
 void BlinkTask::tick()
 {
-    if (moving)
+    if (moving && !error)
     {
         switch (state)
         {

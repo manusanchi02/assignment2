@@ -29,7 +29,7 @@ void LeavingTask ::init(int period)
 
 void LeavingTask ::tick()
 {
-    if (leaving)
+    if (leaving && !error)
     {
         led1->switchOff();
         led2->switchOn();

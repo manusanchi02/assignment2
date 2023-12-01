@@ -16,7 +16,7 @@ void ApproachTask ::init(int period)
 
 void ApproachTask ::tick()
 {
-    if (moving)
+    if (moving && !error)
     {
         if (sonar->getDistance() < minDist)
         {

@@ -38,28 +38,6 @@
 
 Scheduler sched;
 LcdMonitor *lcd;
-/*
-TemperatureSensor *ts;
-void serialCommunication() {
-	String state = "state:";
-	if(welcome)
-		state = "Welcome";
-	else if(moving)
-		state = "Moving";
-	else if(ready)
-		state = "Ready";
-	else if(leaving)
-		state = "Leaving";
-	else if(closing)
-		state = "Closing";
-	else if(sleeping)
-		state = "Sleeping";
-	String temperature = "temp:" + String(ts->getTemperature());
-	String cars = "cars:" + String(carCounter);
-	Serial.println("state:" + state);
-	Serial.println("temp:" + String(ts->getTemperature()));
-	Serial.println("cars:" + String(carCounter));
-}*/
 
 void setup()
 {
@@ -108,5 +86,4 @@ void setup()
 void loop()
 {
 	sched.schedule();
-	//serialCommunication();
 }

@@ -15,7 +15,7 @@ void WashBlinkTask::init(int period)
 
 void WashBlinkTask::tick()
 {
-    if (washing)
+    if (washing && !error)
     {
         switch (state)
         {

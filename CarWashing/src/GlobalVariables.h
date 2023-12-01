@@ -1,5 +1,6 @@
 extern float minDist;
 extern volatile bool isNear;
+extern volatile bool error;
 extern volatile bool washing;
 extern volatile bool moving;
 extern volatile bool welcome;

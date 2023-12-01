@@ -16,8 +16,8 @@ void LoadBarTask ::init(int period)
 
 void LoadBarTask ::tick()
 {
-    if (washing)
-    {;
+    if (washing && !error)
+    {
         lcd->setAndPrint("Current status: ", 0, 0);
         lcd->setAndPrint(BARCHAR, bar, 1);
         lcd->setAndPrint(BARCHAR, bar, 2);

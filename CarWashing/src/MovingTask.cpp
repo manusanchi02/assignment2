@@ -21,14 +21,14 @@ void MovingTask ::init(int period)
  */
 void MovingTask ::tick()
 {
-    if (moving && !isNear)
+    if (moving && !isNear && !error)
     {
         lcd->clean();
         lcd->setAndPrint("Proceed to the", 0, 0);
         lcd->setAndPrint("Washing Area", 0, 1);
         gate->setOpen();
     }
-    if (moving && isNear)
+    if (moving && isNear && !error)
     {
         isNear = false;
         moving = false;

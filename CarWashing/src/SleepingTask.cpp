@@ -19,7 +19,7 @@ void SleepingTask::init(int period)
 
 void SleepingTask::tick()
 {
-    if (sleeping)
+    if (sleeping && !error)
     {
         attachInterrupt(digitalPinToInterrupt(pirPin), wakeUp, RISING);
         digitalWrite(ledpin, LOW);
