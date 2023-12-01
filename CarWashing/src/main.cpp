@@ -1,3 +1,8 @@
+/**
+ * @author lorenzo.annibalini@studio.unibo.it
+ * @author lorenzo.bacchini4@studio.unibo.it
+ * @author emanuele.sanchi@studio.unibo.it
+ */
 #include "ApproachTask.h"
 #include "MovingTask.h"
 #include "LeavingTask.h"
