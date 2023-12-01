@@ -6,6 +6,8 @@ volatile bool interruptEnabled = false;
 void buttonHandler()
 {
     buttonPressed = true;
+    Serial.println("premuto");
+    Serial.println(buttonPressed);
 }
 
 ReadyTask ::ReadyTask(int ledPin, int gatePin, int gateOpen, int gateClose, int rows, int columns, int buttonPin)
@@ -25,28 +27,25 @@ void ReadyTask ::init(int period)
     gate = new Gate(this->gatePin, gateOpen, gateClose);
     lcd = new LcdMonitor(rows, columns);
     Task::init(period);
+    attachInterrupt(digitalPinToInterrupt(buttonPin), buttonHandler, CHANGE);
 }
 
 void ReadyTask ::tick()
 {
+    //buttonPressed = false;
+    Serial.println(buttonPressed);
     if (ready)
     {
-        if(!interruptEnabled) {
-            attachInterrupt(digitalPinToInterrupt(buttonPin), buttonHandler, CHANGE);
-            interruptEnabled = true;
-        }
+        Serial.println(buttonPressed);
         led->switchOn();
         lcd->clean();
-        lcd->setAndPrint("Ready to wash", 1, 0);
+        lcd->setAndPrint("Ready to wash", 0, 0);
         gate->setClose();
         if(buttonPressed) {
-            buttonPressed = false;
             washing = true;
             ready = false;
-            interruptEnabled = false;
             lcd->clean();
-            detachInterrupt(digitalPinToInterrupt(buttonPin));
-
         }
     }
+    buttonPressed = false;
 }
