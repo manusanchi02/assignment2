@@ -21,7 +21,7 @@ void SleepingTask::tick()
 {
     if (sleeping)
     {
-        attachInterrupt(digitalPinToInterrupt(pirPin), wakeUp, CHANGE);
+        attachInterrupt(digitalPinToInterrupt(pirPin), wakeUp, RISING);
         digitalWrite(ledpin, LOW);
         set_sleep_mode(SLEEP_MODE_PWR_DOWN);
         sleep_enable();
