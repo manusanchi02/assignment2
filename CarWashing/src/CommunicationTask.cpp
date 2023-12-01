@@ -60,5 +60,5 @@ void CommunicationTask::tick()
         previousCars = carCounter;
     }
 
-    //checkSerial();
+    checkSerial();
 }
