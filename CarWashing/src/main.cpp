@@ -14,6 +14,7 @@
 #include "WashBlinkTask.h"
 #include "Scheduler.h"
 #include "WelcomeTask.h"
+#include "CommunicationTask.h"
 #include "Gate.h"
 #include "TemperatureSensor.h"
 #include "GlobalVariables.h"
@@ -36,8 +37,9 @@
 
 
 Scheduler sched;
-TemperatureSensor *ts;
 LcdMonitor *lcd;
+/*
+TemperatureSensor *ts;
 void serialCommunication() {
 	String state = "state:";
 	if(welcome)
@@ -57,11 +59,10 @@ void serialCommunication() {
 	Serial.println("state:" + state);
 	Serial.println("temp:" + String(ts->getTemperature()));
 	Serial.println("cars:" + String(carCounter));
-}
+}*/
 
 void setup()
 {
-	ts = new TemperatureSensor(TEMPERATUREPIN);
 	lcd = new LcdMonitor(LCDROWS, LCDCOLS);
 	// calibrate sensors
 	lcd->setAndPrint("Calibrating sensors", 0, 0);
@@ -100,6 +101,9 @@ void setup()
 	Task *t9 = new SleepingTask(PIRPIN, LEDPIN1);
 	t9->init(50);
 	sched.addTask(t9);
+	Task *t10 = new CommunicationTask(TEMPERATUREPIN);
+	t10->init(500);
+	sched.addTask(t10);
 }
 void loop()
 {
