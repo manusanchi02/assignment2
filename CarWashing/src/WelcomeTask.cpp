@@ -21,7 +21,7 @@ void WelcomeTask ::tick()
     {
         led->switchOn();
         lcd->clean();
-        lcd->setAndPrint("Welcome", 1, 0);
+        lcd->setAndPrint("Welcome", 0, 0);
         counter += myPeriod;
     }
     if(counter >= N1)

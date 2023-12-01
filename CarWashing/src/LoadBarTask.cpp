@@ -32,7 +32,7 @@ void LoadBarTask ::tick()
         washing = false;
         leaving = true;
         counter = 0;
-        bar = 1;
+        bar = 0;
         lcd->clean();
     }
 }
