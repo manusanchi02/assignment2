@@ -61,7 +61,7 @@ while True:
 
     if serialInst.in_waiting:
         packet = serialInst.readline()
-        if packet.decode('utf').rstrip('\n') == 'error':
+        '''if packet.decode('utf').rstrip('\n') == 'error':
             errors = 'Error'
             errore = True
             defaultLayout.append([sg.Button('Restart')])
@@ -70,8 +70,20 @@ while True:
             errors = 'No Errors'
             errore = False
             defaultLayout.remove([sg.Button('Restart')])
-            window['-ERROR-'].update(errors)
-        if packet.decode('utf').rstrip('\n') == 'temp':
+            window['-ERROR-'].update(errors)'''
+        
+        msg = packet.decode('utf').rstrip('\n')
+        if(msg.split(':')[0] == 'temp'):
+            currentTemp = msg.split(':')[1]
+            window['-TEMP-'].update(currentTemp)
+        if(msg.split(':')[0] == 'cars'):
+            totalWash = msg.split(':')[1]
+            window['-WASH-'].update(totalWash)
+        if(msg.split(':')[0] == 'state'):
+            currentState = msg.split(':')[1]
+            window['-STATE-'].update(currentState)
+        #print(msg)
+'''        if packet.decode('utf').rstrip('\n') == 'temp':
             currentTemp = packet.decode('utf').rstrip()
             window['-TEMP-'].update(currentTemp)
         if packet.decode('utf').rstrip('\n') == 'wash':
@@ -79,7 +91,7 @@ while True:
             window['-WASH-'].update(totalWash)
         if packet.decode('utf').rstrip('\n') == 'state':
             currentState = packet.decode('utf').rstrip()
-            window['-STATE-'].update(currentState)
+            window['-STATE-'].update(currentState)'''
         
 
 

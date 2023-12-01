@@ -30,17 +30,16 @@
 #define GATECLOSE 0
 #define TRIGPIN 7
 #define ECHOPIN 8
-#define BUTTONPIN 3
-#define PIRPIN 2
+#define BUTTONPIN 2
+#define PIRPIN 3
 #define TEMPERATUREPIN A0
 
 
 Scheduler sched;
 TemperatureSensor *ts;
 LcdMonitor *lcd;
-String serialCommunication() {
-	String message = "";
-	String state = "State: ";
+void serialCommunication() {
+	String state = "state:";
 	if(welcome)
 		state = "Welcome";
 	else if(moving)
@@ -53,10 +52,11 @@ String serialCommunication() {
 		state = "Closing";
 	else if(sleeping)
 		state = "Sleeping";
-	String temperature = "Temperature: " + String(ts->getTemperature());
-	String cars = "Car Counter: " + String(carCounter);
-	message = state + " " + temperature + " " + cars;
-	return message;
+	String temperature = "temp:" + String(ts->getTemperature());
+	String cars = "cars:" + String(carCounter);
+	Serial.println("state:" + state);
+	Serial.println("temp:" + String(ts->getTemperature()));
+	Serial.println("cars:" + String(carCounter));
 }
 
 void setup()
@@ -65,7 +65,7 @@ void setup()
 	lcd = new LcdMonitor(LCDROWS, LCDCOLS);
 	// calibrate sensors
 	lcd->setAndPrint("Calibrating sensors", 0, 0);
-	delay(10000);
+	//delay(10000);
 
 	Serial.begin(9600);
 	sched.init(100);
@@ -104,5 +104,5 @@ void setup()
 void loop()
 {
 	sched.schedule();
-	Serial.print(serialCommunication());
+	//serialCommunication();
 }
