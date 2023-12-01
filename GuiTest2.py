@@ -24,7 +24,8 @@ sg.theme('LightBlue')  # Add a touch of color
 defaultLayout = [  [sg.Text('Current Temperature:') ,sg.Text(currentTemp,key='-TEMP-')],
             [sg.Text('Total Car Washed:') ,sg.Text(totalWash,key='-WASH-')],
             [sg.Text('Current State:') ,sg.Text(currentState,key='-STATE-')],
-            [sg.Text('Error:') ,sg.Text(errors,key='-ERROR-')]]
+            [sg.Text('Error:') ,sg.Text(errors,key='-ERROR-')],
+            [sg.Button('Restart')]]
 
 loginLayout = [  [sg.Text('Please enter COM port')],
             [sg.Text('COM Port Available:'),sg.Text(*portsList)],
@@ -60,18 +61,7 @@ while True:
         defaultLayout.remove([sg.Button('Restart')])
 
     if serialInst.in_waiting:
-        packet = serialInst.readline()
-        '''if packet.decode('utf').rstrip('\n') == 'error':
-            errors = 'Error'
-            errore = True
-            defaultLayout.append([sg.Button('Restart')])
-            window['-ERROR-'].update(errors)
-        else:
-            errors = 'No Errors'
-            errore = False
-            defaultLayout.remove([sg.Button('Restart')])
-            window['-ERROR-'].update(errors)'''
-        
+        packet = serialInst.readline()       
         msg = packet.decode('utf').rstrip('\n')
         if(msg.split(':')[0] == 'temp'):
             currentTemp = msg.split(':')[1]
@@ -81,18 +71,12 @@ while True:
             window['-WASH-'].update(totalWash)
         if(msg.split(':')[0] == 'state'):
             currentState = msg.split(':')[1]
-            window['-STATE-'].update(currentState)
-        #print(msg)
-'''        if packet.decode('utf').rstrip('\n') == 'temp':
-            currentTemp = packet.decode('utf').rstrip()
-            window['-TEMP-'].update(currentTemp)
-        if packet.decode('utf').rstrip('\n') == 'wash':
-            totalWash = packet.decode('utf').rstrip()
-            window['-WASH-'].update(totalWash)
-        if packet.decode('utf').rstrip('\n') == 'state':
-            currentState = packet.decode('utf').rstrip()
-            window['-STATE-'].update(currentState)'''
-        
-
-
+            window['-STATE-'].update(currentState)  
+    if(event == 'Restart'):
+        serialInst.write(b'restart')
+        window['-ERROR-'].update('No Errors')
+        print('Restarting')
+    if(float(currentTemp) > 23):
+        serialInst.write(b'tError')
+        window['-ERROR-'].update('Temperature Error')
 window.close()
