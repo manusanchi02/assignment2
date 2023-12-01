@@ -6,8 +6,6 @@ volatile bool interruptEnabled = false;
 void buttonHandler()
 {
     buttonPressed = true;
-    Serial.println("premuto");
-    Serial.println(buttonPressed);
 }
 
 ReadyTask ::ReadyTask(int ledPin, int gatePin, int gateOpen, int gateClose, int rows, int columns, int buttonPin)
@@ -32,11 +30,8 @@ void ReadyTask ::init(int period)
 
 void ReadyTask ::tick()
 {
-    //buttonPressed = false;
-    Serial.println(buttonPressed);
     if (ready)
     {
-        Serial.println(buttonPressed);
         led->switchOn();
         lcd->clean();
         lcd->setAndPrint("Ready to wash", 0, 0);
