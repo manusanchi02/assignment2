@@ -3,6 +3,7 @@
 #include "Task.h"
 #include <Arduino.h>
 #include "TemperatureSensor.h"
+#include "LcdMonitor.h"
 
 class CommunicationTask : public Task
 {
@@ -10,8 +11,10 @@ class CommunicationTask : public Task
     /**
      * Constructor for the ComunicationTask class.
      * @param pin the pin of temperature sensor.
+     * @param rows the number of rows of the LCD.
+     * @param cols the number of columns of the LCD.
     */
-        CommunicationTask(int pin);
+        CommunicationTask(int pin, int rows, int cols);
         /**
          * Initializes the ComunicationTask.
         */
@@ -22,6 +25,9 @@ class CommunicationTask : public Task
         void tick();
     protected:
         int pin;
+        int rows;
+        int cols;
+        LcdMonitor *lcd;
         TemperatureSensor *ts;
 };
 #endif

@@ -7,20 +7,22 @@ int previousCars = 0;
 
 void checkSerial() {
     String msg = Serial.readStringUntil('\n');
-    Serial.println(msg);
     if(msg == "tRestart") {
         error = false;
     }
 }
 
-CommunicationTask::CommunicationTask(int pin)
+CommunicationTask::CommunicationTask(int pin, int rows, int cols)
 {
+    this->rows = rows;
+    this->cols = cols;
     this->pin = pin;
 }
 
 void CommunicationTask::init(int period)
 {
     ts = new TemperatureSensor(pin);
+    lcd = new LcdMonitor(rows, cols);
     Task::init(period);
 }
 
@@ -52,6 +54,10 @@ void CommunicationTask::tick()
         previousTemp = temp;
         if(previousTemp >= errorTemperature){
             Serial.println("error:Temperature Error");
+            lcd->clean();
+            lcd->setAndPrint("Detected a Problem", 0, 0);
+            lcd->setAndPrint("-", 0, 1);
+            lcd->setAndPrint("Please Wait", 0, 2);
             error = true;
         }
     }

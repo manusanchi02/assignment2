@@ -79,7 +79,7 @@ void setup()
 	Task *t9 = new SleepingTask(PIRPIN, LEDPIN1);
 	t9->init(50);
 	sched.addTask(t9);
-	Task *t10 = new CommunicationTask(TEMPERATUREPIN);
+	Task *t10 = new CommunicationTask(TEMPERATUREPIN, LCDROWS, LCDCOLS);
 	t10->init(500);
 	sched.addTask(t10);
 }
