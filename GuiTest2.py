@@ -64,7 +64,7 @@ while True:
         if(msg.split(':')[0] == 'error'):
             print("entrato")
             errors = msg.split(':')[1]
-            window['-RESTART-'].update(disabled=False)
+            window['Restart'].update(disabled=False)
             window['-ERROR-'].update(errors)
         if(msg.split(':')[0] == 'temp'):
             currentTemp = msg.split(':')[1]
@@ -79,7 +79,7 @@ while True:
     if event == 'Restart':
         serialInst.write(b'tRestart')
         window['-ERROR-'].update('No Errors')
-        window['-RESTART-'].update(disabled=True)
+        window['Restart'].update(disabled=True)
         print('Restarting')
 
         
