@@ -25,8 +25,9 @@ defaultLayout = [  [sg.Text('Current Temperature:') ,sg.Text(currentTemp,key='-T
             [sg.Text('Total Car Washed:') ,sg.Text(totalWash,key='-WASH-')],
             [sg.Text('Current State:') ,sg.Text(currentState,key='-STATE-')],
             [sg.Text('Error:') ,sg.Text(errors,key='-ERROR-')],
-            [sg.Button('Restart',key='-RESTART-')]]
-            
+            #[sg.Button('Restart',key='-RESTART-')]]
+            [sg.Button('Restart')]]
+
 loginLayout = [  [sg.Text('Please enter COM port')],
             [sg.Text('COM Port Available:'),sg.Text(*portsList)],
             [sg.Text('Enter the name:', size=(15, 1)), sg.InputText()],
@@ -63,7 +64,7 @@ while True:
         if(msg.split(':')[0] == 'error'):
             print("entrato")
             errors = msg.split(':')[1]
-            window['-RESTART-'].update(disabled=False)
+            window['Restart'].update(disabled=False)
             window['-ERROR-'].update(errors)
         if(msg.split(':')[0] == 'temp'):
             currentTemp = msg.split(':')[1]
@@ -78,7 +79,7 @@ while True:
     if event == 'Restart':
         serialInst.write(b'tRestart')
         window['-ERROR-'].update('No Errors')
-        window['-RESTART-'].update(disabled=True)
+        window['Restart'].update(disabled=True)
         print('Restarting')
 
         
