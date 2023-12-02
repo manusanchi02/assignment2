@@ -24,8 +24,9 @@ sg.theme('LightBlue')  # Add a touch of color
 defaultLayout = [  [sg.Text('Current Temperature:') ,sg.Text(currentTemp,key='-TEMP-')],
             [sg.Text('Total Car Washed:') ,sg.Text(totalWash,key='-WASH-')],
             [sg.Text('Current State:') ,sg.Text(currentState,key='-STATE-')],
-            [sg.Text('Error:') ,sg.Text(errors,key='-ERROR-')]]
-
+            [sg.Text('Error:') ,sg.Text(errors,key='-ERROR-')],
+            [sg.Button('Restart',key='-RESTART-')]]
+            
 loginLayout = [  [sg.Text('Please enter COM port')],
             [sg.Text('COM Port Available:'),sg.Text(*portsList)],
             [sg.Text('Enter the name:', size=(15, 1)), sg.InputText()],
@@ -62,7 +63,7 @@ while True:
         if(msg.split(':')[0] == 'error'):
             print("entrato")
             errors = msg.split(':')[1]
-            defaultLayout.append([sg.Button('Restart')])
+            windows['-RESTART-'].update(disabled=False)
             window['-ERROR-'].update(errors)
         if(msg.split(':')[0] == 'temp'):
             currentTemp = msg.split(':')[1]
@@ -77,7 +78,7 @@ while True:
     if event == 'Restart':
         serialInst.write(b'tRestart')
         window['-ERROR-'].update('No Errors')
-        defaultLayout.remove([sg.Button('Restart')])   
+        window['-RESTART-'].update(disabled=True)
         print('Restarting')
 
         
