@@ -68,7 +68,11 @@ while True:
             window['-WASH-'].update(totalWash)
         if(msg.split(':')[0] == 'state'):
             currentState = msg.split(':')[1]
-            window['-STATE-'].update(currentState)  
+            window['-STATE-'].update(currentState) 
+        if(msg.split(':')[0] == 'error'):
+            errors = msg.split(':')[1]
+            windows['-RESTART-'].Disabled = False
+            window['-ERROR-'].update(errors)
             
     if(event == 'Restart'):
         serialInst.write(b'restart')
