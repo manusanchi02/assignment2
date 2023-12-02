@@ -61,7 +61,7 @@ while True:
         msg = packet.decode('utf').rstrip('\n')
         if(msg.split(':')[0] == 'error'):
             errors = msg.split(':')[1]
-            defaultLayout.append([sg.Button('Restart')])
+            windows['-RESTART-'].update(disabled=False)
             window['-ERROR-'].update(errors)
         if(msg.split(':')[0] == 'temp'):
             currentTemp = msg.split(':')[1]
@@ -76,7 +76,7 @@ while True:
     if(event == 'Restart'):
         serialInst.write(b'restart')
         window['-ERROR-'].update('No Errors')
-        defaultLayout.remove([sg.Button('Restart')])   
+        window['-RESTART-'].update(disabled=True)
         print('Restarting')
 
         
