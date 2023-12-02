@@ -6,7 +6,7 @@ float previousTemp = 0;
 int previousCars = 0;
 
 void checkSerial() {
-    String msg = Serial.readStringUntil('\n');
+    String msg = "";//Serial.readStringUntil('\n');
     Serial.println(msg);
     if(msg == "tError") {
         error = true;
