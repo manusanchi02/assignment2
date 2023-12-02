@@ -52,7 +52,7 @@ while True:
 window = sg.Window('Arduino Controller', defaultLayout)
 while True:
     
-    event, values = window.read(timeout=100)
+    event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
         window.close()
         break
@@ -61,8 +61,9 @@ while True:
         packet = serialInst.readline()       
         msg = packet.decode('utf').rstrip('\n')
         if(msg.split(':')[0] == 'error'):
+            print("entrato")
             errors = msg.split(':')[1]
-            windows['-RESTART-'].Disabled = False
+            window['-RESTART-'].Disabled = False
             window['-ERROR-'].update(errors)
         if(msg.split(':')[0] == 'temp'):
             currentTemp = msg.split(':')[1]
@@ -74,14 +75,10 @@ while True:
             currentState = msg.split(':')[1]
             window['-STATE-'].update(currentState) 
             
-    if(event == 'Restart'):
-        serialInst.write(b'restart')
+    if event == 'Restart':
+        serialInst.write(b'tRestart')
         window['-ERROR-'].update('No Errors')
         window['-RESTART-'].Disabled = True    
         print('Restarting')
-        
-    if(float(currentTemp) > 23):
-        serialInst.write(b'tError')
-        window['-ERROR-'].update('Temperature Error')
         
 window.close()

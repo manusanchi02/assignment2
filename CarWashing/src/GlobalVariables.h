@@ -10,3 +10,4 @@ extern volatile bool sleeping;
 extern volatile bool leaving;
 extern volatile bool gateState;
 extern volatile int carCounter;
+extern volatile float errorTemperature;

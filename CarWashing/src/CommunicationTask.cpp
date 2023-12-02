@@ -7,10 +7,6 @@ int previousCars = 0;
 
 void checkSerial() {
     String msg = Serial.readStringUntil('\n');
-    Serial.println(msg);
-    if(msg == "tError") {
-        error = true;
-    }
     if(msg == "tRestart") {
         error = false;
     }
@@ -53,8 +49,11 @@ void CommunicationTask::tick()
     if(previousTemp - temp < -0.5 || previousTemp - temp > 0.5) {
 	    Serial.println("temp:" + String(ts->getTemperature()));
         previousTemp = temp;
+        if(previousTemp >= errorTemperature){
+            Serial.println("error:Temperature Error");
+            error = true;
+        }
     }
-
     if(previousCars != carCounter) {
 	    Serial.println("cars:" + String(carCounter));
         previousCars = carCounter;
