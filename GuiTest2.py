@@ -60,6 +60,10 @@ while True:
     if serialInst.in_waiting:
         packet = serialInst.readline()       
         msg = packet.decode('utf').rstrip('\n')
+        if(msg.split(':')[0] == 'error'):
+            errors = msg.split(':')[1]
+            windows['-RESTART-'].Disabled = False
+            window['-ERROR-'].update(errors)
         if(msg.split(':')[0] == 'temp'):
             currentTemp = msg.split(':')[1]
             window['-TEMP-'].update(currentTemp)
@@ -69,10 +73,6 @@ while True:
         if(msg.split(':')[0] == 'state'):
             currentState = msg.split(':')[1]
             window['-STATE-'].update(currentState) 
-        if(msg.split(':')[0] == 'error'):
-            errors = msg.split(':')[1]
-            windows['-RESTART-'].Disabled = False
-            window['-ERROR-'].update(errors)
             
     if(event == 'Restart'):
         serialInst.write(b'restart')
