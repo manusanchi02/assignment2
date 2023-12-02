@@ -51,7 +51,7 @@ while True:
 window = sg.Window('Arduino Controller', defaultLayout)
 while True:
     
-    event, values = window.read()
+    event, values = window.read(timeout=100)
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
         window.close()
         break

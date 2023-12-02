@@ -7,6 +7,7 @@ int previousCars = 0;
 
 void checkSerial() {
     String msg = Serial.readStringUntil('\n');
+    Serial.println(msg);
     if(msg == "tRestart") {
         error = false;
     }
