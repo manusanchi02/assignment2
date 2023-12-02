@@ -63,7 +63,7 @@ while True:
         if(msg.split(':')[0] == 'error'):
             print("entrato")
             errors = msg.split(':')[1]
-            windows['-RESTART-'].update(disabled=False)
+            window['-RESTART-'].update(disabled=False)
             window['-ERROR-'].update(errors)
         if(msg.split(':')[0] == 'temp'):
             currentTemp = msg.split(':')[1]
