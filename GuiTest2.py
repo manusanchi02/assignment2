@@ -79,9 +79,6 @@ while True:
         window['-ERROR-'].update('No Errors')
         window['-RESTART-'].Disabled = True    
         print('Restarting')
-        
-    if(float(currentTemp) > 23):
-        serialInst.write(b'tError')
-        window['-ERROR-'].update('Temperature Error')
+
         
 window.close()
