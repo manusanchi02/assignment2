@@ -8,7 +8,6 @@ totalWash = 0
 currentState = 'Sleeping'
 errors = 'No Errors'
 comPort= 'COM3'
-restartButton = sg.Button('Restart')
 
 #Read COM port
 ports = serial.tools.list_ports.comports()
