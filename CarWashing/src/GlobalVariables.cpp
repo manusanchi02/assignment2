@@ -10,3 +10,4 @@ volatile bool sleeping = false;
 volatile bool isNear = false;
 volatile bool gateState = false;
 volatile int carCounter = 0;
+volatile float errorTemperature = 26;
