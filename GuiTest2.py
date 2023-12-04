@@ -24,13 +24,12 @@ defaultLayout = [  [sg.Text('Current Temperature:') ,sg.Text(currentTemp,key='-T
             [sg.Text('Total Car Washed:') ,sg.Text(totalWash,key='-WASH-')],
             [sg.Text('Current State:') ,sg.Text(currentState,key='-STATE-')],
             [sg.Text('Error:') ,sg.Text(errors,key='-ERROR-')],
-            [sg.Button('Restart',key='-RESTART-')]]
+            [sg.Button('Restart',key='-RESTART-', disabled=True)]]
 
 loginLayout = [  [sg.Text('Please enter COM port')],
             [sg.Text('COM Port Available:'),sg.Text(*portsList)],
             [sg.Text('Enter the name:', size=(15, 1)), sg.InputText()],
             [sg.Button('Ok')]]
-
 
 # Create the Window
 windowLogin = sg.Window('Arduino Controller', loginLayout)
