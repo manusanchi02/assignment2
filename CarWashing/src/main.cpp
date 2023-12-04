@@ -19,8 +19,7 @@
 #include "TemperatureSensor.h"
 #include "GlobalVariables.h"
 #include "LcdMonitor.h"
-#define MAXDIST 0.80
-#define MINDIST 0.30
+
 #define LEDPIN1 13
 #define LEDPIN2 12
 #define LEDPIN3 11
@@ -56,21 +55,21 @@ void setup()
 	t1->init(400);
 	sched.addTask(t1);
 	Task *t2 = new BlinkTask(LEDPIN2);
-	t2->init(250);
+	t2->init(100);
 	sched.addTask(t2);
-	Task *t3 = new ApproachTask(TRIGPIN, ECHOPIN, MINDIST);
+	Task *t3 = new ApproachTask(TRIGPIN, ECHOPIN);
 	t3->init(200);
 	sched.addTask(t3);
 	Task *t4 = new ReadyTask(LEDPIN2, GATEPIN, GATEOPEN, GATECLOSE, LCDROWS, LCDCOLS, BUTTONPIN);
 	t4->init(200);
 	sched.addTask(t4);
-	Task *t5 = new WashBlinkTask(LEDPIN3);
-	t5->init(250);
+	Task *t5 = new WashBlinkTask(LEDPIN2);
+	t5->init(500);
 	sched.addTask(t5);
 	Task *t6 = new LoadBarTask(LCDROWS, LCDCOLS);
 	t6->init(100);
 	sched.addTask(t6);
-	Task *t7 = new LeavingTask(LEDPIN2, LEDPIN3, LCDROWS, LCDCOLS, GATEPIN, GATECLOSE, GATEOPEN, ECHOPIN, TRIGPIN, MAXDIST);
+	Task *t7 = new LeavingTask(LEDPIN2, LEDPIN3, LCDROWS, LCDCOLS, GATEPIN, GATECLOSE, GATEOPEN, ECHOPIN, TRIGPIN);
 	t7->init(300);
 	sched.addTask(t7);
 	Task *t8 = new ClosingTask(GATEPIN, GATEOPEN, GATECLOSE, LEDPIN3);

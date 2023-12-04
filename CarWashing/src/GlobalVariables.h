@@ -1,4 +1,12 @@
-extern float minDist;
+#define N1 5000
+#define N2 2000
+#define N3 8000
+#define N4 3000
+#define N5 4000
+#define MAXDIST 0.80
+#define MINDIST 0.30
+#define ERROR_TEMPERATURE 50
+
 extern volatile bool isNear;
 extern volatile bool error;
 extern volatile bool washing;

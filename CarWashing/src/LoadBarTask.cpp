@@ -23,11 +23,11 @@ void LoadBarTask ::tick()
         lcd->setAndPrint(BARCHAR, bar, 2);
         lcd->setAndPrint(BARCHAR, bar, 3);
         counter += myPeriod;
-        if(counter % 200 == 0) {
+        if(counter % 400 == 0) {
             bar++;
         }
     }
-    if (counter >= 4000)
+    if (counter >= N3)
     {
         washing = false;
         leaving = true;

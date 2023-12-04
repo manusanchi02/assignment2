@@ -5,6 +5,7 @@ String previousState = "Welcome";
 float previousTemp = 0;
 int previousCars = 0;
 
+
 void checkSerial() {
     int msg = Serial.read();
     if(msg != -1) {
@@ -17,6 +18,7 @@ CommunicationTask::CommunicationTask(int pin, int rows, int cols)
     this->rows = rows;
     this->cols = cols;
     this->pin = pin;
+    this->counter = 0;
 }
 
 void CommunicationTask::init(int period)
@@ -52,11 +54,17 @@ void CommunicationTask::tick()
     if(previousTemp - temp < -0.5 || previousTemp - temp > 0.5) {
 	    Serial.println("temp:" + String(ts->getTemperature()));
         previousTemp = temp;
-        if(previousTemp >= errorTemperature){
-            Serial.println("error:Temperature Error");
+        if(previousTemp >= ERROR_TEMPERATURE){
+            counter += myPeriod;
+        }else{
+            counter = 0;
+        }
+        if(counter >= N5){
+            counter = 0;
+            Serial.println("error:Maintenance required");
             lcd->clean();
             lcd->setAndPrint("Detected a Problem", 0, 0);
-            lcd->setAndPrint("-", 0, 1);
+            lcd->setAndPrint("-", 10, 1);
             lcd->setAndPrint("Please Wait", 0, 2);
             error = true;
         }

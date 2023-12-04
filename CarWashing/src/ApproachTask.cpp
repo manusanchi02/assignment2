@@ -1,11 +1,10 @@
 #include "ApproachTask.h"
 
-ApproachTask ::ApproachTask(int pinTrigger, int pinEcho, double minDist)
+ApproachTask ::ApproachTask(int pinTrigger, int pinEcho)
 {
     this->pinTrigger = pinTrigger;
     this->pinEcho = pinEcho;
     this->counter = 0;
-    this->minDist = minDist;
 }
 
 void ApproachTask ::init(int period)
@@ -18,7 +17,7 @@ void ApproachTask ::tick()
 {
     if (moving && !error)
     {
-        if (sonar->getDistance() < minDist)
+        if (sonar->getDistance() < MINDIST)
         {
             counter += myPeriod;
         }

@@ -27,6 +27,7 @@ class CommunicationTask : public Task
         int pin;
         int rows;
         int cols;
+        int counter;
         LcdMonitor *lcd;
         TemperatureSensor *ts;
 };
