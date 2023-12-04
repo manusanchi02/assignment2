@@ -3,8 +3,8 @@
 #define N3 8000
 #define N4 3000
 #define N5 4000
-#define MAXDIST 0.80
-#define MINDIST 0.30
+#define MAXDIST 0.30
+#define MINDIST 0.10
 #define ERROR_TEMPERATURE 50
 
 extern volatile bool isNear;
