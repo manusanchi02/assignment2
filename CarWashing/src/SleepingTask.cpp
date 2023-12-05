@@ -1,5 +1,8 @@
 #include "SleepingTask.h"
 
+/**
+ * Function to handle the PIR interrupt to wake up the arduino.
+ */
 void wakeUp()
 {
     sleeping = false;

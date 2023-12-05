@@ -10,6 +10,8 @@ public:
     /**
      * Class constructor:
      * @param pin number of the led pin
+     * @param rows number of lcd rows
+     * @param columns number of lcd columns
      */
     WelcomeTask(int pin, int rows, int columns);
     /**

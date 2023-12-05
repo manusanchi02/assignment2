@@ -16,9 +16,6 @@ void MovingTask ::init(int period)
     Task::init(period);
 }
 
-/**
- * isNear is a boolean variable that is set to true by the ApproachingTask when the car is near the washing area.
- */
 void MovingTask ::tick()
 {
     if (moving && !isNear && !error)

@@ -24,7 +24,7 @@ void WelcomeTask ::tick()
         lcd->setAndPrint("Welcome", 0, 0);
         counter += myPeriod;
     }
-    if(counter >= N1)
+    if (counter >= N1)
     {
         counter = 0;
         moving = true;

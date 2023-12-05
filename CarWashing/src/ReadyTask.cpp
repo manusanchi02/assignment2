@@ -1,8 +1,11 @@
 #include "ReadyTask.h"
 
+// Variable to check if the button has been pressed.
 volatile bool buttonPressed = false;
-volatile bool interruptEnabled = false;
 
+/**
+ * Function to handle the button interrupt.
+ */
 void buttonHandler()
 {
     buttonPressed = true;
@@ -36,7 +39,8 @@ void ReadyTask ::tick()
         lcd->clean();
         lcd->setAndPrint("Ready to wash", 0, 0);
         gate->setClose();
-        if(buttonPressed) {
+        if (buttonPressed)
+        {
             washing = true;
             ready = false;
             lcd->clean();

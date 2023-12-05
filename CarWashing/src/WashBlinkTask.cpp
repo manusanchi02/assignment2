@@ -1,5 +1,4 @@
 #include "WashBlinkTask.h"
-#define PERIOD 60
 
 WashBlinkTask::WashBlinkTask(int pin)
 {

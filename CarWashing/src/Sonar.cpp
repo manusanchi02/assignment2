@@ -1,6 +1,7 @@
 #include "Sonar.h"
 #include <Arduino.h>
 
+// Speed of sound at sea level = 331.45 + 0.62 * temperature
 const float temperature = 20;
 const float velocitaSuono = 331.45 + 0.62 * temperature;
 

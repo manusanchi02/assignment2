@@ -34,20 +34,23 @@
 #define PIRPIN 3
 #define TEMPERATUREPIN A0
 
-
 Scheduler sched;
 LcdMonitor *lcd;
 
+/**
+ * Setup function, called once when the program starts.
+ */
 void setup()
 {
+	// calibrate sensors.
 	lcd = new LcdMonitor(LCDROWS, LCDCOLS);
-	// calibrate sensors
 	lcd->setAndPrint("Calibrating sensors", 0, 0);
-	//delay(10000);
+	delay(10000);
 
 	Serial.begin(9600);
 	sched.init(100);
 
+	// create and add tasks.
 	Task *t0 = new WelcomeTask(LEDPIN1, LCDROWS, LCDCOLS);
 	t0->init(200);
 	sched.addTask(t0);
@@ -82,6 +85,11 @@ void setup()
 	t10->init(500);
 	sched.addTask(t10);
 }
+
+/**
+ * Loop function called continuously to make
+ * the scheduler schedule over the tasks
+ */
 void loop()
 {
 	sched.schedule();
