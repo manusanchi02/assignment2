@@ -61,7 +61,8 @@ void CommunicationTask::tick()
     if(previousTemp - temp < -0.5 || previousTemp - temp > 0.5) {
 	    Serial.println("temp:" + String(ts->getTemperature()));
         previousTemp = temp;
-        if(previousTemp >= ERROR_TEMPERATURE){
+    }
+    if(previousTemp >= ERROR_TEMPERATURE){
             counter += myPeriod;
         }else{
             counter = 0;
@@ -75,7 +76,6 @@ void CommunicationTask::tick()
             lcd->setAndPrint("Please Wait", 0, 2);
             error = true;
         }
-    }
     // condition to check if the number of cars is changed
     if(previousCars != carCounter) {
 	    Serial.println("cars:" + String(carCounter));
