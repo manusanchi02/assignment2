@@ -1,7 +1,7 @@
 /**
- * @author lorenzo.annibalini@studio.unibo.it
- * @author lorenzo.bacchini4@studio.unibo.it
- * @author emanuele.sanchi@studio.unibo.it
+ * @author lorenzo.annibalini@studio.unibo.it 	Annibalini Lorenzo
+ * @author lorenzo.bacchini4@studio.unibo.it 	Bacchini Lorenzo
+ * @author emanuele.sanchi@studio.unibo.it 		Sanchi Emanuele
  */
 #include "ApproachTask.h"
 #include "MovingTask.h"
