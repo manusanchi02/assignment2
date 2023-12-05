@@ -34,9 +34,7 @@ loginLayout = [  [sg.Text('Please enter COM port')],
 windowLogin = sg.Window('Arduino Controller', loginLayout)
 # Event Loop to process "events" and get the "values" of the inputs
 while True:
-    #event, values = windowLogin.read()
-    event = 'Ok'
-    values = ['COM4']
+    event, values = windowLogin.read()
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
         windowLogin.close()
         break
