@@ -11,6 +11,9 @@ Button::Button(int pin)
     pinMode(pin, INPUT);
 }
 
+/**
+ * Function to resolve phisical bouncing of a button.
+*/
 bool resolveBouncing()
 {
     if (millis() - previousTime > FIXAMOUNT)

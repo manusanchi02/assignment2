@@ -7,7 +7,7 @@ ClosingTask ::ClosingTask(int gatePin, int gateOpen, int gateClose,  int ledPin)
     this->gateOpen = gateOpen;
     this->gateClose = gateClose;
     this->ledPin = ledPin;
-    counter = 0;
+    counter = 0; // counter for the time spent in this state
 }
 
 void ClosingTask ::init(int period)

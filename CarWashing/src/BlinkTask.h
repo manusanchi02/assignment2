@@ -6,8 +6,18 @@
 class BlinkTask : public Task
 {
 public:
+    /**
+     * Constructor for the BlinkTask class.
+     * @param pin the pin where the led is connected.
+    */
     BlinkTask(int pin);
+    /**
+     * Init method.
+    */
     void init(int period);
+    /**
+     * Tick method.
+    */
     void tick();
 
 protected:

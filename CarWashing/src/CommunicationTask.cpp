@@ -30,6 +30,11 @@ void CommunicationTask::init(int period)
 
 void CommunicationTask::tick()
 {
+    // to avoid multiple prints of the same message we use a previous state variable 
+    // and we check if the state is changed. We also do the same for the temperature
+    // and the number of cars
+    
+    // condition to check what state we are in
     String state = "";
 	if(welcome)
 		state = "Welcome";
@@ -47,10 +52,12 @@ void CommunicationTask::tick()
 		state = "Sleeping";
     float temp = ts->getTemperature();
 	String temperature = "temp:" + String(temp);
+    // condition to check if the state is changed
     if(previousState != state){
 	    Serial.println("state:" + state);
         previousState = state;
     }
+    // condition to check if the temperature is changed by more than 0.5
     if(previousTemp - temp < -0.5 || previousTemp - temp > 0.5) {
 	    Serial.println("temp:" + String(ts->getTemperature()));
         previousTemp = temp;
@@ -69,10 +76,11 @@ void CommunicationTask::tick()
             error = true;
         }
     }
+    // condition to check if the number of cars is changed
     if(previousCars != carCounter) {
 	    Serial.println("cars:" + String(carCounter));
         previousCars = carCounter;
     }
-
+    // call the function to check if there is a message from the serial by the Gui
     checkSerial();
 }

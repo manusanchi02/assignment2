@@ -1,6 +1,4 @@
 #include "LeavingTask.h"
-#define DISTANCE 60
-#define MAXDISTANCE 1000
 
 LeavingTask ::LeavingTask(int ledPin1, int ledPin2, int rows, int column, int gatePin, int gateClose, int gateOpen, int echoPinIn, int trigPinOut)
 {

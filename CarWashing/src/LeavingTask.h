@@ -17,6 +17,8 @@ public:
      * @param rows number of lcd rows
      * @param column number of lcd columns
      * @param gatePin number of the gate pin
+     * @param gateClose number of angular degrees to close the gate
+     * @param gateOpen number of angular degrees to open the gate
      * @param echoPinIn number of the echo pin
      * @param trigPinOut number of the trig pin
      */

@@ -5,7 +5,7 @@ class Button
 public:
     /**
      * Class contructor.
-     * @param pin the pin number where button is connect
+     * @param pin the pin number where button is connected.
      */
     Button(int pin);
     /**

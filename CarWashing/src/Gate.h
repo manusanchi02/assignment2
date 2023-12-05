@@ -6,9 +6,24 @@
 class Gate
 {
 public:
+    /**
+     * Class contructor.
+     * @param pin the pin number where the servo is connected.
+     * @param open number of angular degrees to open the gate.
+     * @param close number of angular degrees to close the gate.
+    */
     Gate(int pin, int open, int close);
+    /**
+     * Function to open the gate.
+    */
     void setOpen();
+    /**
+     * Function to close the gate.
+    */
     void setClose();
+    /**
+     * Function to check if the gate is open.
+    */
     bool isOpen();
 
 protected:

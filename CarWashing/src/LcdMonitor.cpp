@@ -2,7 +2,6 @@
 
 LcdMonitor::LcdMonitor(int rows, int columns)
 {
-    // Non sono sicuro che lcd vada istanziato però credo di si, potrebbe dare molti errori
     lcd = new LiquidCrystal_I2C(0x27, columns, rows);
     lcd->init();
     lcd->backlight();

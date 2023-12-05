@@ -10,9 +10,9 @@ public:
     /**
      * Class constructor:
      * @param gatePin number of the gate pin
-     * @param echoPin number of the echo pin
-     * @param trigPin number of the trig pin
-     * @param maxDistance max distance to start closing
+     * @param gateOpen number of angular degrees to open the gate
+     * @param gateClose number of angular degrees to close the gate
+     * @param ledPin number of the pin where the led is connected
      */
     ClosingTask(int gatePin, int gateOpen, int gateClose, int ledPin);
     /**

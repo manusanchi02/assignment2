@@ -1,11 +1,12 @@
 #include "LoadBarTask.h"
 #define BARCHAR "#"
+
 LoadBarTask ::LoadBarTask(int rows, int column)
 {
     this->rows = rows;
     this->column = column;
-    counter = 0;
-    bar = 0;
+    counter = 0; // variable to count the time
+    bar = 0; // variable to count the load bar
 }
 
 void LoadBarTask ::init(int period)
@@ -23,7 +24,7 @@ void LoadBarTask ::tick()
         lcd->setAndPrint(BARCHAR, bar, 2);
         lcd->setAndPrint(BARCHAR, bar, 3);
         counter += myPeriod;
-        if(counter % 400 == 0) {
+        if(counter % 400 == 0) { // every 400 ms we increase the load bar so at the end the lcd will be full
             bar++;
         }
     }

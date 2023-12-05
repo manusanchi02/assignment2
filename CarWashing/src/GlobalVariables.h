@@ -1,3 +1,4 @@
+// Various global variables used in the project for states and other purposes.
 #define N1 5000
 #define N2 2000
 #define N3 8000
