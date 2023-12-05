@@ -16,7 +16,7 @@ public:
      * @param xposition x coordinate of start pixel (0-based)
      * @param yposition y coordinate of start pixel (0-based)
      */
-    void setAndPrint(char *string, int xposition, int yposition);
+    void setAndPrint(String string, int xposition, int yposition);
 
     /**
      * Function to clean the lcd monitor.

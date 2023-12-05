@@ -7,10 +7,10 @@ LcdMonitor::LcdMonitor(int rows, int columns)
     lcd->backlight();
 }
 
-void LcdMonitor::setAndPrint(char *string, int xposition, int yposition)
+void LcdMonitor::setAndPrint(String string, int xposition, int yposition)
 {
     lcd->setCursor(xposition, yposition);
-    lcd->printstr(string);
+    lcd->print(string);
 }
 
 void LcdMonitor::clean()
