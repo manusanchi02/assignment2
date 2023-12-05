@@ -46,5 +46,8 @@ void ReadyTask ::tick()
             lcd->clean();
         }
     }
+    /* To handle button bouncing we set at the end of the tick the buttonPressed to false.
+     * This work togheter with the function resolveBouncing in Button.cpp
+     */
     buttonPressed = false;
 }
