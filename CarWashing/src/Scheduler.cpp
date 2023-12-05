@@ -31,7 +31,7 @@ void Scheduler::schedule()
 {
   while (!timerFlag)
   {
-    if (millis() - currentMillis > basePeriod)
+    if ((long)millis() - currentMillis > basePeriod)
     {
       currentMillis = millis();
       timerFlag = true;
